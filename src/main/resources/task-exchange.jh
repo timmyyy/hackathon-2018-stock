@@ -1,0 +1,143 @@
+/**
+ * Статусы заявки
+ */
+enum RequestStatus {
+    NEW,
+    PERFORMERS_REQUESTED,
+    PERFORMERS_ACCEPTED,
+    PERFORMERS_SELECTED,
+    PERFORMER_CONFIRMED,
+    IN_PROGRESS,
+    DONE
+}
+
+/**
+ * Статусы отклика
+ */
+enum ResponseStatus {
+	NEW,
+    ACCEPTED,
+    REJECTED
+}
+
+enum EmployeeRole {
+	PERFORMER,
+    CUSTOMER
+}
+
+enum TaskComplexity {
+	LOW,
+    MEDIUM,
+    HARD
+}
+
+/**
+ * Задача
+ */
+entity Task {
+	id Long,
+    originalText String,
+    commaSeparatedKeywords String,
+    system String,
+    subsystem String,
+    complexity TaskComplexity,
+    newIntegrations Boolean,
+    modifyIntegrations Boolean,
+    newPrintForms Boolean,
+    modifyPrintForms Boolean
+}
+
+/**
+ * Сотрудник организации,
+ * может быть заказчиком и исполнителем
+ */
+entity Employee {
+	id Long,
+    role EmployeeRole,
+    username String,
+    firstname String,
+    secondname String,
+    surename String,
+    email String,
+    mobilePhone String,
+    organization String,
+    department String,
+    country String,
+    streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String,
+    rank Integer
+}
+
+
+
+/**
+ * Отклик
+ */
+entity Respond {
+	id Long,
+    status ResponseStatus
+}
+
+/**
+ * Отзыв о выполнении задачи
+ */
+entity Feedback {
+	id Long,
+    rank Integer
+}
+
+/**
+ * Заявка на исполнителя
+ */
+entity Request {
+	id Long,
+    createTime Instant,
+    closeTime Instant,
+    changeTime Instant,
+    status RequestStatus
+}
+
+/**
+ * Уведомление
+ * Исполнителя о заявке
+ * Заказчика об отклике
+ * О назначении заявки исполнителю
+ * О подтверждении исполнителем взятия в работу
+ */
+entity Notification {
+	id Long,
+    createTime Instant,
+    readed Boolean
+}
+
+entity NotificationType {
+	id Long,
+    code NotificationTypeCode,
+    title String,
+    text String
+}
+
+enum NotificationTypeCode {
+	NEW_REQUEST,
+    NEW_RESPONSE,
+    YOU_ARE_THE_CHOSEN_ONE,
+    REQUEST_CONFIRMED
+}
+
+relationship OneToOne {
+	Request{customer} to Employee,
+    Request{performer} to Employee,
+    Request{task} to Task{request},
+    Request{feedback} to Feedback{request},
+    Respond{employee} to Employee,
+    Notification{request} to Request,
+    Notification{employee} to Employee,
+    Notification{type} to NotificationType
+}
+
+relationship OneToMany {
+	Request{responses} to Respond{request},
+    Employee{completedTasks} to Task{performer}
+}
