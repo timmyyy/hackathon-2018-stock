@@ -1,0 +1,72 @@
+{
+    "name": "Request",
+    "fields": [
+        {
+            "fieldName": "createTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "closeTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "changeTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "RequestStatus",
+            "fieldValues": "NEW,PERFORMERS_REQUESTED,PERFORMERS_ACCEPTED,PERFORMERS_SELECTED,PERFORMER_CONFIRMED,IN_PROGRESS,DONE"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "customer",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "request"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "performer",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "request"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "request"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "feedback",
+            "otherEntityName": "feedback",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "request"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "responses",
+            "otherEntityName": "respond",
+            "otherEntityRelationshipName": "request"
+        }
+    ],
+    "changelogDate": "20181029191023",
+    "javadoc": "Заявка на исполнителя",
+    "entityTableName": "request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

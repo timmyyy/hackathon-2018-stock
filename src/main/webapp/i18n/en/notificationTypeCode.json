@@ -1,0 +1,11 @@
+{
+    "jhipsterApp": {
+        "NotificationTypeCode" : {
+            "null": "",
+            "NEW_REQUEST": "NEW_REQUEST",
+            "NEW_RESPONSE": "NEW_RESPONSE",
+            "YOU_ARE_THE_CHOSEN_ONE": "YOU_ARE_THE_CHOSEN_ONE",
+            "REQUEST_CONFIRMED": "REQUEST_CONFIRMED"
+        }
+    }
+}

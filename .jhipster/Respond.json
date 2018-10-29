@@ -1,0 +1,36 @@
+{
+    "name": "Respond",
+    "fields": [
+        {
+            "fieldName": "status",
+            "fieldType": "ResponseStatus",
+            "fieldValues": "NEW,ACCEPTED,REJECTED"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respond"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "request",
+            "otherEntityName": "request",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181029191021",
+    "javadoc": "Отклик",
+    "entityTableName": "respond",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

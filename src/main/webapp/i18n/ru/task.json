@@ -1,0 +1,32 @@
+
+{
+    "jhipsterApp": {
+        "task" : {
+            "home": {
+                "title": "Tasks",
+                "createLabel": "Создать новый Task",
+                "createOrEditLabel": "Создать или отредактировать Task"
+            },
+            "created": "Новый Task создан с идентификатором {{ param }}",
+            "updated": "Task обновлен с идентификатором {{ param }}",
+            "deleted": "Task удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Task {{ id }}?"
+            },
+            "detail": {
+                "title": "Task"
+            },
+            "originalText": "Original Text",
+            "commaSeparatedKeywords": "Comma Separated Keywords",
+            "system": "System",
+            "subsystem": "Subsystem",
+            "complexity": "Complexity",
+            "newIntegrations": "New Integrations",
+            "modifyIntegrations": "Modify Integrations",
+            "newPrintForms": "New Print Forms",
+            "modifyPrintForms": "Modify Print Forms",
+            "request": "Request",
+            "performer": "Performer"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Feedback",
+    "fields": [
+        {
+            "fieldName": "rank",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "request",
+            "otherEntityName": "request",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "feedback"
+        }
+    ],
+    "changelogDate": "20181029191022",
+    "javadoc": "Отзыв о выполнении задачи",
+    "entityTableName": "feedback",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

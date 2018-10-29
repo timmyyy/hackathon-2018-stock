@@ -1,0 +1,24 @@
+
+{
+    "jhipsterApp": {
+        "respond" : {
+            "home": {
+                "title": "Responds",
+                "createLabel": "Create a new Respond",
+                "createOrEditLabel": "Create or edit a Respond"
+            },
+            "created": "A new Respond is created with identifier {{ param }}",
+            "updated": "A Respond is updated with identifier {{ param }}",
+            "deleted": "A Respond is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Respond {{ id }}?"
+            },
+            "detail": {
+                "title": "Respond"
+            },
+            "status": "Status",
+            "employee": "Employee",
+            "request": "Request"
+        }
+    }
+}

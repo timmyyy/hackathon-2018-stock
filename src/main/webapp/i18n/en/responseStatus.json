@@ -1,0 +1,10 @@
+{
+    "jhipsterApp": {
+        "ResponseStatus" : {
+            "null": "",
+            "NEW": "NEW",
+            "ACCEPTED": "ACCEPTED",
+            "REJECTED": "REJECTED"
+        }
+    }
+}

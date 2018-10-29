@@ -1,0 +1,28 @@
+{
+    "name": "NotificationType",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "NotificationTypeCode",
+            "fieldValues": "NEW_REQUEST,NEW_RESPONSE,YOU_ARE_THE_CHOSEN_ONE,REQUEST_CONFIRMED"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181029191025",
+    "entityTableName": "notification_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

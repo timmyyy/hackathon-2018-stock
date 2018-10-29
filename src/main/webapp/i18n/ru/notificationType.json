@@ -1,0 +1,24 @@
+
+{
+    "jhipsterApp": {
+        "notificationType" : {
+            "home": {
+                "title": "Notification Types",
+                "createLabel": "Создать новый Notification Type",
+                "createOrEditLabel": "Создать или отредактировать Notification Type"
+            },
+            "created": "Новый Notification Type создан с идентификатором {{ param }}",
+            "updated": "Notification Type обновлен с идентификатором {{ param }}",
+            "deleted": "Notification Type удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Notification Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification Type"
+            },
+            "code": "Code",
+            "title": "Title",
+            "text": "Text"
+        }
+    }
+}

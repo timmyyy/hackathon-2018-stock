@@ -1,0 +1,84 @@
+{
+    "name": "Employee",
+    "fields": [
+        {
+            "fieldName": "role",
+            "fieldType": "EmployeeRole",
+            "fieldValues": "PERFORMER,CUSTOMER"
+        },
+        {
+            "fieldName": "username",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "firstname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "secondname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surename",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobilePhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "organization",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "department",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streetAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stateProvince",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rank",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "completedTasks",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "performer"
+        }
+    ],
+    "changelogDate": "20181029191020",
+    "javadoc": "Сотрудник организации,\nможет быть заказчиком и исполнителем",
+    "entityTableName": "employee",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

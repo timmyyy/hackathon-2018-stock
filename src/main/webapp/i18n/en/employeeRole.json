@@ -1,0 +1,9 @@
+{
+    "jhipsterApp": {
+        "EmployeeRole" : {
+            "null": "",
+            "PERFORMER": "PERFORMER",
+            "CUSTOMER": "CUSTOMER"
+        }
+    }
+}

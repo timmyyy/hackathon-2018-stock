@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Respond.
+    -->
+    <changeSet id="20181029191021-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="respond"
+                                 constraintName="fk_respond_employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="request_id"
+                                 baseTableName="respond"
+                                 constraintName="fk_respond_request_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request"/>
+
+    </changeSet>
+</databaseChangeLog>

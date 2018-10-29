@@ -1,0 +1,26 @@
+
+{
+    "jhipsterApp": {
+        "notification" : {
+            "home": {
+                "title": "Notifications",
+                "createLabel": "Создать новый Notification",
+                "createOrEditLabel": "Создать или отредактировать Notification"
+            },
+            "created": "Новый Notification создан с идентификатором {{ param }}",
+            "updated": "Notification обновлен с идентификатором {{ param }}",
+            "deleted": "Notification удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Notification {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification"
+            },
+            "createTime": "Create Time",
+            "readed": "Readed",
+            "request": "Request",
+            "employee": "Employee",
+            "type": "Type"
+        }
+    }
+}

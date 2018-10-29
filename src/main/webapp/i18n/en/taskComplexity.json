@@ -1,0 +1,10 @@
+{
+    "jhipsterApp": {
+        "TaskComplexity" : {
+            "null": "",
+            "LOW": "LOW",
+            "MEDIUM": "MEDIUM",
+            "HARD": "HARD"
+        }
+    }
+}

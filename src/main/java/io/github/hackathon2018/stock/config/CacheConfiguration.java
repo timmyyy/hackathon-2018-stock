@@ -41,6 +41,15 @@ public class CacheConfiguration {
             cm.createCache(io.github.hackathon2018.stock.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.hackathon2018.stock.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.hackathon2018.stock.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Task.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Employee.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Employee.class.getName() + ".completedTasks", jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Respond.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Feedback.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Request.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Request.class.getName() + ".responses", jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Notification.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.NotificationType.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

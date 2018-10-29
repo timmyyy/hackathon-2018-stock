@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.hackathon2018</groupId>
-    <artifactId>stock-app</artifactId>
+    <groupId>io.github.hackathon2018.stock</groupId>
+    <artifactId>jhipster</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Task Exchange Application</name>
+    <name>Jhipster</name>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->

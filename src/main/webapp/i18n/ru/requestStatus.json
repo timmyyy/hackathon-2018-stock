@@ -1,0 +1,14 @@
+{
+    "jhipsterApp": {
+        "RequestStatus" : {
+            "null": "",
+            "NEW": "NEW",
+            "PERFORMERS_REQUESTED": "PERFORMERS_REQUESTED",
+            "PERFORMERS_ACCEPTED": "PERFORMERS_ACCEPTED",
+            "PERFORMERS_SELECTED": "PERFORMERS_SELECTED",
+            "PERFORMER_CONFIRMED": "PERFORMER_CONFIRMED",
+            "IN_PROGRESS": "IN_PROGRESS",
+            "DONE": "DONE"
+        }
+    }
+}

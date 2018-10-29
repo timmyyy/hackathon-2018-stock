@@ -1,0 +1,37 @@
+
+{
+    "jhipsterApp": {
+        "employee" : {
+            "home": {
+                "title": "Employees",
+                "createLabel": "Создать новый Employee",
+                "createOrEditLabel": "Создать или отредактировать Employee"
+            },
+            "created": "Новый Employee создан с идентификатором {{ param }}",
+            "updated": "Employee обновлен с идентификатором {{ param }}",
+            "deleted": "Employee удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Employee {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee"
+            },
+            "role": "Role",
+            "username": "Username",
+            "firstname": "Firstname",
+            "secondname": "Secondname",
+            "surename": "Surename",
+            "email": "Email",
+            "mobilePhone": "Mobile Phone",
+            "organization": "Organization",
+            "department": "Department",
+            "country": "Country",
+            "streetAddress": "Street Address",
+            "postalCode": "Postal Code",
+            "city": "City",
+            "stateProvince": "State Province",
+            "rank": "Rank",
+            "completedTasks": "Completed Tasks"
+        }
+    }
+}

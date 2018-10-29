@@ -1,0 +1,49 @@
+{
+    "name": "Notification",
+    "fields": [
+        {
+            "fieldName": "createTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "readed",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "request",
+            "otherEntityName": "request",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "notification"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "notification"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "notificationType",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "notification"
+        }
+    ],
+    "changelogDate": "20181029191024",
+    "javadoc": "Уведомление\nИсполнителя о заявке\nЗаказчика об отклике\nО назначении заявки исполнителю\nО подтверждении исполнителем взятия в работу",
+    "entityTableName": "notification",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,30 @@
+
+{
+    "jhipsterApp": {
+        "request" : {
+            "home": {
+                "title": "Requests",
+                "createLabel": "Создать новый Request",
+                "createOrEditLabel": "Создать или отредактировать Request"
+            },
+            "created": "Новый Request создан с идентификатором {{ param }}",
+            "updated": "Request обновлен с идентификатором {{ param }}",
+            "deleted": "Request удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Request {{ id }}?"
+            },
+            "detail": {
+                "title": "Request"
+            },
+            "createTime": "Create Time",
+            "closeTime": "Close Time",
+            "changeTime": "Change Time",
+            "status": "Status",
+            "customer": "Customer",
+            "performer": "Performer",
+            "task": "Task",
+            "feedback": "Feedback",
+            "responses": "Responses"
+        }
+    }
+}

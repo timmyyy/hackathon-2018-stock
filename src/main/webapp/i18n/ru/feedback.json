@@ -1,0 +1,23 @@
+
+{
+    "jhipsterApp": {
+        "feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "Создать новый Feedback",
+                "createOrEditLabel": "Создать или отредактировать Feedback"
+            },
+            "created": "Новый Feedback создан с идентификатором {{ param }}",
+            "updated": "Feedback обновлен с идентификатором {{ param }}",
+            "deleted": "Feedback удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Feedback {{ id }}?"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "rank": "Rank",
+            "request": "Request"
+        }
+    }
+}
