@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 import io.github.hackathon2018.stock.domain.User;
 import io.github.hackathon2018.stock.repository.UserRepository;
 import io.github.hackathon2018.stock.security.jwt.TokenProvider;
@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.not;
  * @see UserJWTController
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class UserJWTControllerIntTest {
 
     @Autowired

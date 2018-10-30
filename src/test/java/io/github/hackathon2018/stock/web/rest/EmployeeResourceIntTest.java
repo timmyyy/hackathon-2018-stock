@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Employee;
 import io.github.hackathon2018.stock.repository.EmployeeRepository;
@@ -37,7 +37,7 @@ import io.github.hackathon2018.stock.domain.enumeration.EmployeeRole;
  * @see EmployeeResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class EmployeeResourceIntTest {
 
     private static final EmployeeRole DEFAULT_ROLE = EmployeeRole.PERFORMER;

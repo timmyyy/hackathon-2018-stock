@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 import io.github.hackathon2018.stock.config.Constants;
 import io.github.hackathon2018.stock.domain.Authority;
 import io.github.hackathon2018.stock.domain.User;
@@ -48,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AccountResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class AccountResourceIntTest {
 
     @Autowired

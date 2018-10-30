@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Notification;
 import io.github.hackathon2018.stock.repository.NotificationRepository;
@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see NotificationResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class NotificationResourceIntTest {
 
     private static final Instant DEFAULT_CREATE_TIME = Instant.ofEpochMilli(0L);

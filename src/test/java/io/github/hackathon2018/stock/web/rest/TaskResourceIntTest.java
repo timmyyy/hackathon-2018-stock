@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Task;
 import io.github.hackathon2018.stock.repository.TaskRepository;
@@ -37,7 +37,7 @@ import io.github.hackathon2018.stock.domain.enumeration.TaskComplexity;
  * @see TaskResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class TaskResourceIntTest {
 
     private static final String DEFAULT_ORIGINAL_TEXT = "AAAAAAAAAA";

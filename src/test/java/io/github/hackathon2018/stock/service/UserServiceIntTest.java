@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.service;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 import io.github.hackathon2018.stock.config.Constants;
 import io.github.hackathon2018.stock.domain.User;
 import io.github.hackathon2018.stock.repository.UserRepository;
@@ -26,7 +26,6 @@ import java.time.temporal.ChronoUnit;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -38,7 +37,7 @@ import static org.mockito.Mockito.when;
  * @see UserService
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 @Transactional
 public class UserServiceIntTest {
 
