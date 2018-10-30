@@ -46,9 +46,9 @@ export default (state: RegisterState = initialState, action): RegisterState => {
 };
 
 // Actions
-export const handleRegister = (login, email, password, langKey = 'en') => ({
+export const handleRegister = (role, login, email, password, langKey = 'en') => ({
   type: ACTION_TYPES.CREATE_ACCOUNT,
-  payload: axios.post('api/register', { login, email, password, langKey }),
+  payload: axios.post('api/register', { role, login, email, password, langKey }),
   meta: {
     successMessage: translate('register.messages.success')
   }

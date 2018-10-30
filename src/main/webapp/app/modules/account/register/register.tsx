@@ -1,7 +1,7 @@
 import React from 'react';
 import { Translate, translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { AvForm, AvField, AvRadioGroup, AvRadio } from 'availity-reactstrap-validation';
 import { Row, Col, Alert, Button } from 'reactstrap';
 
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
@@ -24,7 +24,7 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
   }
 
   handleValidSubmit = (event, values) => {
-    this.props.handleRegister(values.username, values.email, values.firstPassword, this.props.currentLocale);
+    this.props.handleRegister(values.role, values.username, values.email, values.firstPassword, this.props.currentLocale);
     event.preventDefault();
   };
 
@@ -45,6 +45,10 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
         <Row className="justify-content-center">
           <Col md="8">
             <AvForm id="register-form" onValidSubmit={this.handleValidSubmit}>
+              <AvRadioGroup name="role" label={translate('global.form.role.title')} required>
+                <AvRadio label={translate('global.form.role.customer')} value="CUSTOMER" />
+                <AvRadio label={translate('global.form.role.performer')} value="PERFORMER" />
+              </AvRadioGroup>
               <AvField
                 name="username"
                 label={translate('global.form.username')}

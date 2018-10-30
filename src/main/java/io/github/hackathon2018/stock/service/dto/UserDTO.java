@@ -21,6 +21,9 @@ public class UserDTO {
     private Long id;
 
     @NotBlank
+    private String role;
+
+    @NotBlank
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     private String login;
@@ -169,6 +172,14 @@ public class UserDTO {
 
     public void setLastModifiedDate(Instant lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Set<String> getAuthorities() {

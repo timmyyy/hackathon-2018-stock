@@ -41,6 +41,11 @@
             "language": "Language"
         },
         "form": {
+            "role": {
+              "title" : "Choose your role",
+              "customer" : "Customer",
+              "performer" : "Performer"
+            },
             "username": "Username",
             "username.placeholder": "Your username",
             "currentpassword": "Current password",

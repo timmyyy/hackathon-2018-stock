@@ -41,6 +41,11 @@
             "language": "Язык"
         },
         "form": {
+            "role": {
+              "title" : "Выберите роль",
+              "customer" : "Заказчик",
+              "performer" : "Исполнитель"
+            },
             "username": "Логин",
             "username.placeholder": "Ваш логин",
             "currentpassword": "Текущий пароль",
