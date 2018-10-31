@@ -2,15 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-// tslint:disable-next-line:no-unused-variable
-import { Translate, ICrudGetAllAction } from 'react-jhipster';
+import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './task.reducer';
-import { ITask } from 'app/shared/model/task.model';
-// tslint:disable-next-line:no-unused-variable
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 
 export interface ITaskProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -21,6 +16,7 @@ export class Task extends React.Component<ITaskProps> {
 
   render() {
     const { taskList, match } = this.props;
+
     return (
       <div>
         <h2 id="task-heading">
@@ -86,11 +82,11 @@ export class Task extends React.Component<ITaskProps> {
                   <td>
                     <Translate contentKey={`jhipsterApp.TaskComplexity.${task.complexity}`} />
                   </td>
-                  <td>{task.newIntegrations ? 'true' : 'false'}</td>
-                  <td>{task.modifyIntegrations ? 'true' : 'false'}</td>
-                  <td>{task.newPrintForms ? 'true' : 'false'}</td>
-                  <td>{task.modifyPrintForms ? 'true' : 'false'}</td>
-                  <td>{task.performer ? <Link to={`employee/${task.performer.id}`}>{task.performer.id}</Link> : ''}</td>
+                  <td>{task.newIntegrations ? 'есть' : 'нет'}</td>
+                  <td>{task.modifyIntegrations ? 'есть' : 'нет'}</td>
+                  <td>{task.newPrintForms ? 'есть' : 'нет'}</td>
+                  <td>{task.modifyPrintForms ? 'есть' : 'нет'}</td>
+                  <td>{task.performer ? <Link to={`employee/${task.performer.id}`}>{task.performer.username}</Link> : 'не назначен'}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${task.id}`} color="info" size="sm">
