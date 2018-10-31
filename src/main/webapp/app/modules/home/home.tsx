@@ -14,10 +14,10 @@ export class Home extends React.Component<IHomeProp> {
       <Row>
         <Col md="9">
           <h2>
-            <Translate contentKey="home.title">Welcome to "STOCK"!</Translate>
-            <Link to={'/register'}>Registration</Link>
-            <Link to={'/login'}>Authentification</Link>
+            <Translate contentKey="home.title" />
           </h2>
+          <Link to={'/register'}>Регистрация</Link>
+          <Link to={'/login'}>Авторизация</Link>
         </Col>
       </Row>
     );
