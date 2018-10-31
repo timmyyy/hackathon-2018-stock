@@ -4,19 +4,13 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 // tslint:disable-next-line:no-unused-variable
-import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
+import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
-
-import { IRequest } from 'app/shared/model/request.model';
 import { getEntities as getRequests } from 'app/entities/request/request.reducer';
-import { IEmployee } from 'app/shared/model/employee.model';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './task.reducer';
-import { ITask } from 'app/shared/model/task.model';
 // tslint:disable-next-line:no-unused-variable
-import { convertDateTimeFromServer } from 'app/shared/util/date-utils';
-import { mapIdList } from 'app/shared/util/entity-utils';
 
 export interface ITaskUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
@@ -74,7 +68,7 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
   };
 
   render() {
-    const { taskEntity, requests, employees, loading, updating } = this.props;
+    const { taskEntity, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -169,21 +163,6 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                     <AvInput id="task-modifyPrintForms" type="checkbox" className="form-control" name="modifyPrintForms" />
                     <Translate contentKey="jhipsterApp.task.modifyPrintForms">Modify Print Forms</Translate>
                   </Label>
-                </AvGroup>
-                <AvGroup>
-                  <Label for="performer.id">
-                    <Translate contentKey="jhipsterApp.task.performer">Performer</Translate>
-                  </Label>
-                  <AvInput id="task-performer" type="select" className="form-control" name="performer.id">
-                    <option value="" key="0" />
-                    {employees
-                      ? employees.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </AvInput>
                 </AvGroup>
                 <Button tag={Link} id="cancel-save" to="/entity/task" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />

@@ -18,6 +18,7 @@ export class Home extends React.Component<IHomeProp> {
 
   render() {
     const { account } = this.props;
+
     return (
       <Row>
         <Col md="9">
