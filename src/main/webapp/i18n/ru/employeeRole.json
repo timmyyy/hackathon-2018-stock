@@ -2,8 +2,8 @@
     "jhipsterApp": {
         "EmployeeRole" : {
             "null": "",
-            "PERFORMER": "PERFORMER",
-            "CUSTOMER": "CUSTOMER"
+            "PERFORMER": "Исполнитель",
+            "CUSTOMER": "Заказчик"
         }
     }
 }

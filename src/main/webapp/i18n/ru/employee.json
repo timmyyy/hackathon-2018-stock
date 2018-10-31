@@ -3,35 +3,35 @@
     "jhipsterApp": {
         "employee" : {
             "home": {
-                "title": "Employees",
-                "createLabel": "Создать новый Employee",
-                "createOrEditLabel": "Создать или отредактировать Employee"
+                "title": "Сотрудники",
+                "createLabel": "Создать нового сотрудника",
+                "createOrEditLabel": "Создать или отредактировать сотрудника"
             },
-            "created": "Новый Employee создан с идентификатором {{ param }}",
-            "updated": "Employee обновлен с идентификатором {{ param }}",
-            "deleted": "Employee удален с идентификатором {{ param }}",
+            "created": "Новый сотрудник создан",
+            "updated": "Сотрудник обновлен",
+            "deleted": "Сотрудник удален",
             "delete": {
-                "question": "Вы уверены что хотите удалить Employee {{ id }}?"
+                "question": "Вы уверены что хотите удалить сотрудника?"
             },
             "detail": {
-                "title": "Employee"
+                "title": "Сотрудник"
             },
-            "role": "Role",
-            "username": "Username",
-            "firstname": "Firstname",
-            "secondname": "Secondname",
-            "surename": "Surename",
+            "role": "Роль",
+            "username": "Логин",
+            "firstname": "Имя",
+            "secondname": "Фамилия",
+            "surename": "Отчество",
             "email": "Email",
-            "mobilePhone": "Mobile Phone",
-            "organization": "Organization",
-            "department": "Department",
-            "country": "Country",
-            "streetAddress": "Street Address",
-            "postalCode": "Postal Code",
-            "city": "City",
-            "stateProvince": "State Province",
-            "rank": "Rank",
-            "completedTasks": "Completed Tasks"
+            "mobilePhone": "Мобильный телефон",
+            "organization": "Организация",
+            "department": "Департамент",
+            "country": "Страна",
+            "streetAddress": "Адрес",
+            "postalCode": "Почтовый иденкс",
+            "city": "Город",
+            "stateProvince": "Область",
+            "rank": "Карма",
+            "completedTasks": "Выполненные задачи"
         }
     }
 }

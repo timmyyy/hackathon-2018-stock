@@ -2,15 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-// tslint:disable-next-line:no-unused-variable
-import { Translate, ICrudGetAllAction } from 'react-jhipster';
+import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './employee.reducer';
-import { IEmployee } from 'app/shared/model/employee.model';
-// tslint:disable-next-line:no-unused-variable
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 
 export interface IEmployeeProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -21,6 +16,7 @@ export class Employee extends React.Component<IEmployeeProps> {
 
   render() {
     const { employeeList, match } = this.props;
+
     return (
       <div>
         <h2 id="employee-heading">
