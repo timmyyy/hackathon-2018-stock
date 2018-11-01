@@ -79,7 +79,7 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
   };
 
   handleClose = () => {
-    this.props.history.push('/entity/request');
+    this.props.history.push('/entity/customer-requests');
   };
 
   render() {

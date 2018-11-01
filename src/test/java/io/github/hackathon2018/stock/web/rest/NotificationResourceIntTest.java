@@ -1,13 +1,11 @@
 package io.github.hackathon2018.stock.web.rest;
 
 import io.github.hackathon2018.stock.StockApp;
-
 import io.github.hackathon2018.stock.domain.Notification;
+import io.github.hackathon2018.stock.repository.EmployeeRepository;
 import io.github.hackathon2018.stock.repository.NotificationRepository;
-import io.github.hackathon2018.stock.service.NotificationService;
-import io.github.hackathon2018.stock.service.UserService;
+import io.github.hackathon2018.stock.repository.RequestRepository;
 import io.github.hackathon2018.stock.web.rest.errors.ExceptionTranslator;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +24,6 @@ import javax.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-
 
 import static io.github.hackathon2018.stock.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -53,6 +50,12 @@ public class NotificationResourceIntTest {
     private NotificationRepository notificationRepository;
 
     @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private RequestRepository requestRepository;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -68,13 +71,10 @@ public class NotificationResourceIntTest {
 
     private Notification notification;
 
-    @Autowired
-    private NotificationService notificationService;
-
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final NotificationResource notificationResource = new NotificationResource(notificationService, notificationRepository);
+        final NotificationResource notificationResource = new NotificationResource(notificationRepository, employeeRepository, requestRepository);
         this.restNotificationMockMvc = MockMvcBuilders.standaloneSetup(notificationResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

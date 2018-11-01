@@ -1,29 +1,53 @@
 import './home.css';
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { Row, Col, Alert } from 'reactstrap';
-
-import { IRootState } from 'app/shared/reducers';
+import { Alert, Col, Row } from 'reactstrap';
 import { getSession } from 'app/shared/reducers/authentication';
-import CustomerHome from 'app/modules/customer-home/customer-home';
+import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
+import PerformerHome from 'app/modules/home/performerHome';
+import { EmployeeRole } from 'app/shared/model/employee.model';
 
 export interface IHomeProp extends StateProps, DispatchProps {}
 
 export class Home extends React.Component<IHomeProp> {
   componentDidMount() {
     this.props.getSession();
+    this.props.getEmployees();
   }
 
   render() {
-    const { account } = this.props;
+    const { account, employees, isAuthenticated } = this.props;
+    const employee = employees.find(item => item.username.toLocaleLowerCase() === account.login);
+
     return (
       <Row>
         <Col md="12">
-          {account && account.login ? (
-            <CustomerHome />
+          {isAuthenticated ? (
+            <div>
+              <h2>Здравствуйте, {account.login}!</h2>
+              <ul>
+                {employee &&
+                  employee.role === EmployeeRole.CUSTOMER && (
+                    <li>
+                      <Link to={'/entity/task-creation'}>Оформить заявку</Link>
+                    </li>
+                  )}
+                {employee &&
+                  employee.role === 'CUSTOMER' && (
+                    <li>
+                      <Link to={'/entity/customer-requests'}>Мои заявки</Link>
+                    </li>
+                  )}
+                {employee &&
+                  employee.role === EmployeeRole.PERFORMER && (
+                    <li>
+                      <PerformerHome />
+                    </li>
+                  )}
+              </ul>
+            </div>
           ) : (
             <div>
               <Alert color="warning">
@@ -42,25 +66,24 @@ export class Home extends React.Component<IHomeProp> {
                 <li>
                   <Link to={'/login'}>Авторизация</Link>
                 </li>
-                <li>
-                  <Link to={'/entity/task-creation'}>Публикация заявки</Link>
-                </li>
               </ul>
             </div>
           )}
         </Col>
-        <Col md="3" className="pad" />
       </Row>
     );
   }
 }
 
-const mapStateToProps = storeState => ({
-  account: storeState.authentication.account,
-  isAuthenticated: storeState.authentication.isAuthenticated
-});
+const mapStateToProps = storeState => {
+  return {
+    account: storeState.authentication.account,
+    isAuthenticated: storeState.authentication.isAuthenticated,
+    employees: storeState.employee.entities
+  };
+};
 
-const mapDispatchToProps = { getSession };
+const mapDispatchToProps = { getSession, getEmployees };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
