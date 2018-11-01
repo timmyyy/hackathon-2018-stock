@@ -8,6 +8,7 @@ import { getSession } from 'app/shared/reducers/authentication';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import PerformerHome from 'app/modules/home/performerHome';
 import { EmployeeRole } from 'app/shared/model/employee.model';
+import PerformerProfile from 'app/shared/PerformerProfile';
 
 export interface IHomeProp extends StateProps, DispatchProps {}
 
@@ -23,7 +24,8 @@ export class Home extends React.Component<IHomeProp> {
 
     return (
       <Row>
-        <Col md="12">
+        <Col md="9">
+          <PerformerProfile />
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
@@ -65,6 +67,7 @@ export class Home extends React.Component<IHomeProp> {
             </div>
           )}
         </Col>
+        <Col md={3} />
       </Row>
     );
   }

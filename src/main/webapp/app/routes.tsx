@@ -14,6 +14,13 @@ import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import { AUTHORITIES } from 'app/config/constants';
 
+// import CreatTask from "app/shared/CreatTask"
+import CustomerProfile from "app/shared/CustomerProfile.tsx"
+// import CustomerTaskList from "app/shared/CustomerTaskList"
+// import Feedback from "app/shared/Feedback"
+// import PerformerProfile from "app/shared/PerformerProfile"
+// import PerformerTaskList from "app/shared/PerformerTaskList"
+
 // tslint:disable:space-in-parens
 const Account = Loadable({
   loader: () => import(/* webpackChunkName: "account" */ 'app/modules/account'),
@@ -39,6 +46,8 @@ const Routes = () => (
       <PrivateRoute path="/account" component={Account} hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]} />
       <PrivateRoute path="/entity" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} />
       <ErrorBoundaryRoute path="/" component={Home} />
+
+      <ErrorBoundaryRoute path="/customer-profile" component={CustomerProfile} />
     </Switch>
   </div>
 );

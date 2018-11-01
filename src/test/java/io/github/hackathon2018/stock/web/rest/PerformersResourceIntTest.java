@@ -3,6 +3,7 @@ package io.github.hackathon2018.stock.web.rest;
 import io.github.hackathon2018.stock.StockApp;
 import io.github.hackathon2018.stock.domain.Performers;
 import io.github.hackathon2018.stock.repository.PerformersRepository;
+import io.github.hackathon2018.stock.service.PerformersService;
 import io.github.hackathon2018.stock.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +38,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class PerformersResourceIntTest {
 
     @Autowired
+    private PerformersService performersService;
+
+    @Autowired
     private PerformersRepository performersRepository;
 
     @Autowired
@@ -58,7 +62,7 @@ public class PerformersResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final PerformersResource performersResource = new PerformersResource(performersRepository);
+        final PerformersResource performersResource = new PerformersResource(performersService, performersRepository);
         this.restPerformersMockMvc = MockMvcBuilders.standaloneSetup(performersResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
