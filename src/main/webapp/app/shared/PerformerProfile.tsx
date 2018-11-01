@@ -19,6 +19,9 @@ export class PerformerProfile extends React.Component {
         </Col>
         <Col md={4}>
           <img src="https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png" style={{ width: '100%' }} />
+          <p style={{ textAlign: 'center' }}>
+            Карма <span style={{ color: 'green' }}>{profile.karma}</span>
+          </p>
         </Col>
         <Col md={8}>
           <h4>ФИО:</h4>
@@ -47,13 +50,14 @@ export class PerformerProfile extends React.Component {
             })}
           </p>
           <h4>Выполненные задачи:</h4>
-          <ul>
+          <p>
             {profile.completedTasks.map(item => (
-              <li>
+              <div style={{ margin: '0 0 5px 0' }}>
+                <img style={{ width: 30, margin: '0 5px 0 0' }} src="https://cdn1.iconfinder.com/data/icons/seo-marketing/504/14-512.png" />
                 <a href="">{item.title}</a>
-              </li>
+              </div>
             ))}
-          </ul>
+          </p>
           <h4 style={{ clear: 'both' }}>Организация:</h4>
           <p>{profile.organization}</p>
           <h4>Департамент:</h4>
@@ -75,6 +79,7 @@ export class PerformerProfile extends React.Component {
 const mapStateToProps = state => ({
   profile: {
     fio: 'Иванов Иван Иванович',
+    karma: '+264',
     organization: 'СберТех',
     rank: 'Главный инженер',
     department: 'Департамент развития фронтальных систем',
