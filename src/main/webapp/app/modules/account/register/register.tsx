@@ -85,7 +85,7 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
                     <AvField id="employee-surename" type="text" name="surename" />
                   </AvGroup>
                   <AvField
-                    name="username"
+                    name="login"
                     label={translate('global.form.username')}
                     placeholder={translate('global.form.username.placeholder')}
                     validate={{
