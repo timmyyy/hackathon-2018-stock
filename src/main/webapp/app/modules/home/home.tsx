@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
 import { getSession } from 'app/shared/reducers/authentication';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
+import CustomerProfile from "app/shared/CustomerProfile.tsx"
+import PerformerProfile from "app/shared/PerformerProfile.tsx"
 
 export interface IHomeProp extends StateProps, DispatchProps {}
 
@@ -21,8 +23,9 @@ export class Home extends React.Component<IHomeProp> {
 
     return (
       <Row>
-        <Col md="12">
-          {isAuthenticated ? (
+        <Col md="9">
+          <PerformerProfile/>
+          {false && isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
               <ul>
@@ -44,10 +47,13 @@ export class Home extends React.Component<IHomeProp> {
                       <Link to={'/entity/tasks-performer'}>Просмотреть мои заявки</Link>
                     </li>
                   )}
+                <li>
+                  <Link to={'/customer-profile'}>Профиль заказчика</Link>
+                </li>
               </ul>
             </div>
           ) : (
-            <div>
+            <div style={{display: "none"}}>
               <Alert color="warning">
                 <h4>Добро пожаловать на STOCK!</h4>
                 <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>
@@ -67,6 +73,9 @@ export class Home extends React.Component<IHomeProp> {
               </ul>
             </div>
           )}
+        </Col>
+        <Col md={3}>
+
         </Col>
       </Row>
     );
