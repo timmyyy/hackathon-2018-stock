@@ -59,7 +59,7 @@ public class Task implements Serializable {
     @Column(name = "modify_print_forms")
     private Boolean modifyPrintForms;
 
-    @OneToOne(mappedBy = "task")
+    @OneToOne(mappedBy = "task", cascade = CascadeType.ALL)
     @JsonIgnore
     private Request request;
 

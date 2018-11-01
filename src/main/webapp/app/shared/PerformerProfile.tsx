@@ -3,6 +3,22 @@ import { connect } from 'react-redux';
 import { Breadcrumb, BreadcrumbItem, Col, Row } from 'reactstrap';
 
 export class PerformerProfile extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      karma: 263
+    }
+  }
+
+  plusKarma = () => {
+    this.setState({karma: ++this.state.karma})
+  }
+
+  minusKarma = () => {
+    this.setState({karma: --this.state.karma})
+  }
+
   render() {
     const { profile } = this.props;
 
@@ -21,7 +37,7 @@ export class PerformerProfile extends React.Component {
           <img src="https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png" style={{ width: '100%' }} />
           <p style={{ textAlign: 'center' }}>Карма</p>
           <p style={{ textAlign: 'center' }}>
-            <span style={{ color: 'red' }}>-</span> {profile.karma} <span style={{ color: 'green' }}>+</span>
+            <span style={{ color: 'red', cursor: 'pointer' }} onClick={ this.minusKarma }>-</span> {this.state.karma} <span style={{ color: 'green', cursor: 'pointer' }} onClick={this.plusKarma}>+</span>
           </p>
         </Col>
         <Col md={8}>
