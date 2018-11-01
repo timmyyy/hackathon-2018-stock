@@ -1,37 +1,46 @@
 package io.github.hackathon2018.stock.service;
 
-import java.util.List;
+import io.github.hackathon2018.stock.domain.Task;
+import io.github.hackathon2018.stock.integration.tomita.TomitaParser;
+import io.github.hackathon2018.stock.integration.tomita.TomitaParserFactory;
+import io.github.hackathon2018.stock.integration.tomita.dto.Facts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
+
+import static io.github.hackathon2018.stock.integration.tomita.TomitaCallType.CMD;
+
+@Service
 public class TaskTextService {
-    public List<String> getServiceNames(String text) {
-        return null;
-    }
+    private final Logger log = LoggerFactory.getLogger(TaskTextService.class);
 
-    public List<String> getSystemNames(String text) {
-        return null;
-    }
+    public Task createTaskFromText(String text) {
+        log.debug("==> createTaskFromText({})", text);
 
-    public List<String> getSubSystemNames(String text) {
-        return null;
-    }
+        TomitaParser parser = TomitaParserFactory.getInstance(CMD);
+        Facts facts = parser.getFacts(text);
+        Task task = new Task();
 
-    public List<String> getCases(String text){
-        return null;
-    }
+        if (facts.getSystems().size() > 0) {
+            task.setSystem(facts.getSystems().get(0));
+        }
+        if (facts.getSubsystems().size() > 0) {
+            task.setSubsystem(facts.getSubsystems().get(0));
+        }
+        if (facts.getKeywords().size() > 0) {
+            StringBuilder keywordsBuilder = new StringBuilder();
+            Iterator<String> iter = facts.getKeywords().iterator();
+            while (iter.hasNext()) {
+                keywordsBuilder.append(iter.next());
+                if (iter.hasNext()) keywordsBuilder.append(",");
+            }
+            task.setCommaSeparatedKeywords(keywordsBuilder.toString());
+        }
 
-    public boolean newIntegrations(String text) {
-        return false;
-    }
+        log.debug("<== createTaskFromText() : {}", task);
 
-    public boolean modifiedIntegrations(String text) {
-        return false;
-    }
-
-    public boolean newPrintForms(String text) {
-        return false;
-    }
-
-    public boolean modifiedPrintForms(String text) {
-        return false;
+        return task;
     }
 }

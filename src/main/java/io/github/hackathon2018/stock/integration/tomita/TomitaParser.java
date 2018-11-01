@@ -1,7 +1,7 @@
 package io.github.hackathon2018.stock.integration.tomita;
 
-import java.util.List;
+import io.github.hackathon2018.stock.integration.tomita.dto.Facts;
 
 public interface TomitaParser {
-    List<String> getCases(String text, TomitaConfig config);
+    Facts getFacts(String text);
 }

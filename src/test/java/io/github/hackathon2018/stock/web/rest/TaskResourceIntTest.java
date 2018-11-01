@@ -4,6 +4,7 @@ import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Task;
 import io.github.hackathon2018.stock.repository.TaskRepository;
+import io.github.hackathon2018.stock.service.TaskTextService;
 import io.github.hackathon2018.stock.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -74,6 +75,9 @@ public class TaskResourceIntTest {
     private TaskRepository taskRepository;
 
     @Autowired
+    private TaskTextService taskTextService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -92,7 +96,7 @@ public class TaskResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final TaskResource taskResource = new TaskResource(taskRepository);
+        final TaskResource taskResource = new TaskResource(taskRepository, taskTextService);
         this.restTaskMockMvc = MockMvcBuilders.standaloneSetup(taskResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -194,7 +198,7 @@ public class TaskResourceIntTest {
             .andExpect(jsonPath("$.[*].newPrintForms").value(hasItem(DEFAULT_NEW_PRINT_FORMS.booleanValue())))
             .andExpect(jsonPath("$.[*].modifyPrintForms").value(hasItem(DEFAULT_MODIFY_PRINT_FORMS.booleanValue())));
     }
-    
+
     @Test
     @Transactional
     public void getTask() throws Exception {
