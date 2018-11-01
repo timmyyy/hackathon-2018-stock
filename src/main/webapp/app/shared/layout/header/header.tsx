@@ -6,6 +6,7 @@ import { Brand } from './header-components';
 import { AdminMenu, AccountMenu, EntitiesMenu } from './menus';
 import { PerformerMenu } from 'app/shared/layout/header/menus/performer';
 import { EmployeeRole } from 'app/shared/model/employee.model';
+import { NewLink } from 'app/shared/layout/header/header-components';
 
 export interface IHeaderProps {
   isAuthenticated: boolean;
@@ -49,6 +50,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
           <Collapse isOpen={this.state.menuOpen} navbar>
             <Nav id="header-tabs" className="ml-auto" navbar>
               {/*<Home />*/}
+              {isAuthenticated && <NewLink to="/performer" title={'Мой профиль'} icon={'list'} />}
               {isAuthenticated && isPerformer && <PerformerMenu />}
               {isAuthenticated && isAdmin && <EntitiesMenu />}
               {isAuthenticated && isAdmin && <AdminMenu showSwagger={isSwaggerEnabled} showDatabase={!isInProduction} />}
