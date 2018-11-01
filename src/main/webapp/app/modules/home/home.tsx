@@ -23,7 +23,6 @@ export class Home extends React.Component<IHomeProp> {
     return (
       <Row>
         <Col md="12">
-          <img style={{ width: '100%' }} src="https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg" />
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
@@ -44,13 +43,16 @@ export class Home extends React.Component<IHomeProp> {
               </ul>
             </div>
           ) : (
-            <div style={{ position: 'absolute', top: 20, right: 40 }}>
-              <Alert color="warning">
-                <h4>Добро пожаловать на STOCK!</h4>У вас нет аккаунта? &nbsp;
-                <Link to="/register" className="alert-link">
-                  Создать новый аккаунт
-                </Link>
-              </Alert>
+            <div>
+              <img style={{ width: '100%' }} src="https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg" />
+              <div style={{ position: 'absolute', top: 20, right: 40 }}>
+                <Alert color="warning">
+                  <h4>Добро пожаловать на STOCK!</h4>У вас нет аккаунта? &nbsp;
+                  <Link to="/register" className="alert-link">
+                    Создать новый аккаунт
+                  </Link>
+                </Alert>
+              </div>
             </div>
           )}
         </Col>
