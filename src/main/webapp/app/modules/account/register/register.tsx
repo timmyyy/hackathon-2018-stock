@@ -7,6 +7,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
 import { IRootState } from 'app/shared/reducers';
 import { handleRegister, reset } from './register.reducer';
+import { login } from 'app/shared/reducers/authentication';
 
 export interface IRegisterProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
@@ -32,6 +33,9 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
 
   handleValidSubmit = (event, values) => {
     this.props.handleRegister(values, this.props.currentLocale);
+    setTimeout(() => {
+      this.props.login(values.username, values.firstPassword);
+    }, 3000);
     this.handleClose();
 
     event.preventDefault();
@@ -198,7 +202,7 @@ const mapStateToProps = ({ locale }: IRootState) => ({
   currentLocale: locale.currentLocale
 });
 
-const mapDispatchToProps = { handleRegister, reset };
+const mapDispatchToProps = { handleRegister, reset, login };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
