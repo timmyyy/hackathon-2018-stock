@@ -70,12 +70,6 @@ module.exports = options => ({
         enforce: 'pre',
         test: /\.jsx?$/,
         loader: 'source-map-loader'
-      },
-      {
-        test: /\.tsx?$/,
-        enforce: 'pre',
-        loader: 'tslint-loader',
-        exclude: [utils.root('node_modules')]
       }
     ]
   },
