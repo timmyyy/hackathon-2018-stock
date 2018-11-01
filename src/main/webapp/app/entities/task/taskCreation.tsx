@@ -7,6 +7,8 @@ import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity, updateEntity, createEntity, reset } from './task.reducer';
+import { createEntity as createRequest } from '../request/request.reducer';
+import { RequestStatus } from 'app/shared/model/request.model.ts';
 
 export interface ITaskUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
@@ -44,6 +46,10 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
       };
 
       this.props.createEntity(entity);
+      this.props.createRequest({
+        status: RequestStatus.NEW,
+        task: entity
+      });
     }
   };
 
@@ -159,14 +165,16 @@ const mapStateToProps = (storeState: IRootState) => ({
   taskEntity: storeState.task.entity,
   loading: storeState.task.loading,
   updating: storeState.task.updating,
-  updateSuccess: storeState.task.updateSuccess
+  updateSuccess: storeState.task.updateSuccess,
+  account: storeState.authentication.account
 });
 
 const mapDispatchToProps = {
   getEntity,
   updateEntity,
   createEntity,
-  reset
+  reset,
+  createRequest
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

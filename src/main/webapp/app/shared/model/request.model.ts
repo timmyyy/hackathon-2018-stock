@@ -6,9 +6,9 @@ import { IRespond } from 'app/shared/model//respond.model';
 import { IPerformers } from 'app/shared/model//performers.model';
 
 export const enum RequestStatus {
-  NEW = 'NEW',
+  NEW = 'Новая',
   PERFORMERS_REQUESTED = 'PERFORMERS_REQUESTED',
-  PERFORMERS_ACCEPTED = 'PERFORMERS_ACCEPTED',
+  PERFORMERS_ACCEPTED = 'Подтверждена',
   PERFORMERS_SELECTED = 'PERFORMERS_SELECTED',
   PERFORMER_CONFIRMED = 'PERFORMER_CONFIRMED',
   ANALYSIS = 'ANALYSIS',

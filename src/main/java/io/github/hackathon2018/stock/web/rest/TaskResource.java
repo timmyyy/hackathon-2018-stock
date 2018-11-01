@@ -3,6 +3,7 @@ package io.github.hackathon2018.stock.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import io.github.hackathon2018.stock.domain.Task;
 import io.github.hackathon2018.stock.repository.TaskRepository;
+import io.github.hackathon2018.stock.service.TaskTextService;
 import io.github.hackathon2018.stock.web.rest.errors.BadRequestAlertException;
 import io.github.hackathon2018.stock.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -32,8 +33,11 @@ public class TaskResource {
 
     private TaskRepository taskRepository;
 
-    public TaskResource(TaskRepository taskRepository) {
+    private TaskTextService taskTextService;
+
+    public TaskResource(TaskRepository taskRepository, TaskTextService taskTextService) {
         this.taskRepository = taskRepository;
+        this.taskTextService = taskTextService;
     }
 
     /**
@@ -54,6 +58,12 @@ public class TaskResource {
         return ResponseEntity.created(new URI("/api/tasks/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    @PostMapping("/tasks/from/txt")
+    @Timed
+    public ResponseEntity<Task> createTask(@RequestBody String text) {
+        return ResponseEntity.ok(taskTextService.createTaskFromText(text));
     }
 
     /**

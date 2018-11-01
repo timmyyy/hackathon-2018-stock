@@ -27,8 +27,7 @@ export class Task extends React.Component<ITaskProps> {
           <Translate contentKey="jhipsterApp.task.home.title">Tasks</Translate>
           <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
             <FontAwesomeIcon icon="plus" />
-            &nbsp;
-            <Translate contentKey="jhipsterApp.task.home.createLabel">Create new Task</Translate>
+            &nbsp; Добавить выполненную задачу
           </Link>
         </h2>
         <div className="table-responsive">

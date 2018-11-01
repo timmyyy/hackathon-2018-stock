@@ -1,7 +1,6 @@
 import './home.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Alert, Col, Row } from 'reactstrap';
 import { getSession } from 'app/shared/reducers/authentication';
@@ -23,7 +22,10 @@ export class Home extends React.Component<IHomeProp> {
 
     return (
       <Row>
-        <Col md="12">
+        <Col md="12" style={{
+          background: !isAuthenticated ? "url(https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg) center center" : "",
+          minHeight: 600
+        }}>
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
@@ -40,33 +42,17 @@ export class Home extends React.Component<IHomeProp> {
                       <Link to={'/entity/customer-requests'}>Мои заявки</Link>
                     </li>
                   )}
-                {employee &&
-                  employee.role === EmployeeRole.PERFORMER && (
-                    <li>
-                      <PerformerHome />
-                    </li>
-                  )}
+                {employee && employee.role === EmployeeRole.PERFORMER && <PerformerHome />}
               </ul>
             </div>
           ) : (
-            <div>
+            <div style={{ position: 'absolute', top: 20, right: 40 }}>
               <Alert color="warning">
-                <h4>Добро пожаловать на STOCK!</h4>
-                <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>
-                &nbsp;
+                <h4>Добро пожаловать на STOCK!</h4>У вас нет аккаунта? &nbsp;
                 <Link to="/register" className="alert-link">
-                  <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
+                  Создать новый аккаунт
                 </Link>
               </Alert>
-              <p>Список форм для отладки</p>
-              <ul>
-                <li>
-                  <Link to={'/register'}>Регистрация</Link>
-                </li>
-                <li>
-                  <Link to={'/login'}>Авторизация</Link>
-                </li>
-              </ul>
             </div>
           )}
         </Col>
