@@ -56,6 +56,14 @@ public class TaskResource {
             .body(result);
     }
 
+    @PostMapping("/tasks/from/txt")
+    @Timed
+    public ResponseEntity<Task> createTask(@RequestBody String text) {
+        Task result = new Task();
+        result.commaSeparatedKeywords(text);
+        return ResponseEntity.ok(result);
+    }
+
     /**
      * PUT  /tasks : Updates an existing task.
      *

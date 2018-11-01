@@ -1,0 +1,22 @@
+﻿encoding "utf8";
+TTextMinerConfig {
+  Dictionary = "mydic.gzt";
+  PrettyOutput = "debug.html";
+  Input = {
+    File = "<input_file>.txt";
+  }
+  Output = {
+    File = "<output_file>.xml";
+    Format = xml;
+  }
+  Articles = [
+	{ Name = "инициатор" }
+	{ Name = "спец_слова" }
+	{ Name = "спец_действия" }
+	{ Name = "кейсы" }
+
+  ]
+  Facts = [
+	{ Name = "Case" }
+  ]
+}
