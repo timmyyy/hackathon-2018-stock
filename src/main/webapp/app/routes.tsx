@@ -15,10 +15,10 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import { AUTHORITIES } from 'app/config/constants';
 
 // import CreatTask from "app/shared/CreatTask"
-import CustomerProfile from "app/shared/CustomerProfile.tsx"
+import CustomerProfile from 'app/shared/CustomerProfile.tsx';
 // import CustomerTaskList from "app/shared/CustomerTaskList"
 // import Feedback from "app/shared/Feedback"
-// import PerformerProfile from "app/shared/PerformerProfile"
+import PerformerProfile from 'app/shared/PerformerProfile';
 // import PerformerTaskList from "app/shared/PerformerTaskList"
 
 // tslint:disable:space-in-parens
@@ -37,6 +37,8 @@ const Routes = () => (
   <div className="view-routes">
     <ErrorBoundaryRoute path="/login" component={Login} />
     <Switch>
+      <ErrorBoundaryRoute path="/customer" component={CustomerProfile} />
+      <ErrorBoundaryRoute path="/performer" component={PerformerProfile} />
       <ErrorBoundaryRoute path="/logout" component={Logout} />
       <ErrorBoundaryRoute path="/register" component={Register} />
       <ErrorBoundaryRoute path="/activate/:key?" component={Activate} />
@@ -46,8 +48,6 @@ const Routes = () => (
       <PrivateRoute path="/account" component={Account} hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]} />
       <PrivateRoute path="/entity" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} />
       <ErrorBoundaryRoute path="/" component={Home} />
-
-      <ErrorBoundaryRoute path="/customer-profile" component={CustomerProfile} />
     </Switch>
   </div>
 );
