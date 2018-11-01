@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 import { getSession } from 'app/shared/reducers/authentication';
-
 export interface IHomeProp extends StateProps, DispatchProps {}
 
 export class CustomerHome extends React.Component<IHomeProp> {
@@ -17,9 +16,8 @@ export class CustomerHome extends React.Component<IHomeProp> {
     return (
       <Row>
         <Col md="9">
-          <h2>Заявки, {account.login}</h2>
-
-          <div>заявочки</div>
+          <h2>Здравствуйте, {account.login}</h2>
+          <Link to={'/entity/task-creation'}>Оформить заявку</Link>
         </Col>
       </Row>
     );

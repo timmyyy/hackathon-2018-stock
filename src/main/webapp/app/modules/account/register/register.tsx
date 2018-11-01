@@ -46,7 +46,7 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
   };
 
   handleClose = () => {
-    // this.props.history.push('/');
+    this.props.history.push('/');
   };
 
   render() {
