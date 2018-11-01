@@ -1,0 +1,14 @@
+{
+    "jhipsterApp": {
+        "CommandRole" : {
+            "null": "",
+            "DEVELOPER": "DEVELOPER",
+            "SYSTEM_ANALYST": "SYSTEM_ANALYST",
+            "BUSINESS_ANALYST": "BUSINESS_ANALYST",
+            "PRODUCT_OWNER": "PRODUCT_OWNER",
+            "DEVOPS_ENGINEER": "DEVOPS_ENGINEER",
+            "HAND_TESTER": "HAND_TESTER",
+            "AUTO_TESTER": "AUTO_TESTER"
+        }
+    }
+}

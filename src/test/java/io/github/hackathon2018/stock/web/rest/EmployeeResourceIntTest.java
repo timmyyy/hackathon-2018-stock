@@ -31,6 +31,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import io.github.hackathon2018.stock.domain.enumeration.EmployeeRole;
+import io.github.hackathon2018.stock.domain.enumeration.CommandRole;
 /**
  * Test class for the EmployeeResource REST controller.
  *
@@ -42,6 +43,9 @@ public class EmployeeResourceIntTest {
 
     private static final EmployeeRole DEFAULT_ROLE = EmployeeRole.PERFORMER;
     private static final EmployeeRole UPDATED_ROLE = EmployeeRole.CUSTOMER;
+
+    private static final CommandRole DEFAULT_COMMAND_ROLE = CommandRole.DEVELOPER;
+    private static final CommandRole UPDATED_COMMAND_ROLE = CommandRole.SYSTEM_ANALYST;
 
     private static final String DEFAULT_USERNAME = "AAAAAAAAAA";
     private static final String UPDATED_USERNAME = "BBBBBBBBBB";
@@ -124,6 +128,7 @@ public class EmployeeResourceIntTest {
     public static Employee createEntity(EntityManager em) {
         Employee employee = new Employee()
             .role(DEFAULT_ROLE)
+            .commandRole(DEFAULT_COMMAND_ROLE)
             .username(DEFAULT_USERNAME)
             .firstname(DEFAULT_FIRSTNAME)
             .secondname(DEFAULT_SECONDNAME)
@@ -162,6 +167,7 @@ public class EmployeeResourceIntTest {
         assertThat(employeeList).hasSize(databaseSizeBeforeCreate + 1);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getRole()).isEqualTo(DEFAULT_ROLE);
+        assertThat(testEmployee.getCommandRole()).isEqualTo(DEFAULT_COMMAND_ROLE);
         assertThat(testEmployee.getUsername()).isEqualTo(DEFAULT_USERNAME);
         assertThat(testEmployee.getFirstname()).isEqualTo(DEFAULT_FIRSTNAME);
         assertThat(testEmployee.getSecondname()).isEqualTo(DEFAULT_SECONDNAME);
@@ -209,6 +215,7 @@ public class EmployeeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
             .andExpect(jsonPath("$.[*].role").value(hasItem(DEFAULT_ROLE.toString())))
+            .andExpect(jsonPath("$.[*].commandRole").value(hasItem(DEFAULT_COMMAND_ROLE.toString())))
             .andExpect(jsonPath("$.[*].username").value(hasItem(DEFAULT_USERNAME.toString())))
             .andExpect(jsonPath("$.[*].firstname").value(hasItem(DEFAULT_FIRSTNAME.toString())))
             .andExpect(jsonPath("$.[*].secondname").value(hasItem(DEFAULT_SECONDNAME.toString())))
@@ -237,6 +244,7 @@ public class EmployeeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(employee.getId().intValue()))
             .andExpect(jsonPath("$.role").value(DEFAULT_ROLE.toString()))
+            .andExpect(jsonPath("$.commandRole").value(DEFAULT_COMMAND_ROLE.toString()))
             .andExpect(jsonPath("$.username").value(DEFAULT_USERNAME.toString()))
             .andExpect(jsonPath("$.firstname").value(DEFAULT_FIRSTNAME.toString()))
             .andExpect(jsonPath("$.secondname").value(DEFAULT_SECONDNAME.toString()))
@@ -275,6 +283,7 @@ public class EmployeeResourceIntTest {
         em.detach(updatedEmployee);
         updatedEmployee
             .role(UPDATED_ROLE)
+            .commandRole(UPDATED_COMMAND_ROLE)
             .username(UPDATED_USERNAME)
             .firstname(UPDATED_FIRSTNAME)
             .secondname(UPDATED_SECONDNAME)
@@ -300,6 +309,7 @@ public class EmployeeResourceIntTest {
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getRole()).isEqualTo(UPDATED_ROLE);
+        assertThat(testEmployee.getCommandRole()).isEqualTo(UPDATED_COMMAND_ROLE);
         assertThat(testEmployee.getUsername()).isEqualTo(UPDATED_USERNAME);
         assertThat(testEmployee.getFirstname()).isEqualTo(UPDATED_FIRSTNAME);
         assertThat(testEmployee.getSecondname()).isEqualTo(UPDATED_SECONDNAME);

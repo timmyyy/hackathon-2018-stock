@@ -7,6 +7,10 @@
             "PERFORMERS_ACCEPTED": "PERFORMERS_ACCEPTED",
             "PERFORMERS_SELECTED": "PERFORMERS_SELECTED",
             "PERFORMER_CONFIRMED": "PERFORMER_CONFIRMED",
+            "ANALYSIS": "ANALYSIS",
+            "APPROVAL": "APPROVAL",
+            "DEVELOPMENT": "DEVELOPMENT",
+            "TESTING": "TESTING",
             "IN_PROGRESS": "IN_PROGRESS",
             "DONE": "DONE"
         }

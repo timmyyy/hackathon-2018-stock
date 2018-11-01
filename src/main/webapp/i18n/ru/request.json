@@ -21,10 +21,10 @@
             "changeTime": "Change Time",
             "status": "Status",
             "customer": "Customer",
-            "performer": "Performer",
             "task": "Task",
             "feedback": "Feedback",
-            "responses": "Responses"
+            "responses": "Responses",
+            "performers": "Performers"
         }
     }
 }

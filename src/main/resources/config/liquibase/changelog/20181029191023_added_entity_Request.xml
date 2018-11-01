@@ -39,8 +39,6 @@
             </column>
             <column name="customer_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_request_customer_id" />
-            </column>            <column name="performer_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_request_performer_id" />
             </column>            <column name="task_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_request_task_id" />
             </column>            <column name="feedback_id" type="bigint">

@@ -40,6 +40,10 @@ import notification, {
 import notificationType, {
   NotificationTypeState
 } from 'app/entities/notification-type/notification-type.reducer';
+// prettier-ignore
+import performers, {
+  PerformersState
+} from 'app/entities/performers/performers.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -60,6 +64,7 @@ export interface IRootState {
   readonly request: RequestState;
   readonly notification: NotificationState;
   readonly notificationType: NotificationTypeState;
+  readonly performers: PerformersState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -82,6 +87,7 @@ const rootReducer = combineReducers<IRootState>({
   request,
   notification,
   notificationType,
+  performers,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

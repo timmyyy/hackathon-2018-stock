@@ -16,22 +16,23 @@
             "detail": {
                 "title": "Employee"
             },
-            "role": "Role",
-            "username": "Username",
-            "firstname": "Firstname",
-            "secondname": "Secondname",
-            "surename": "Surename",
+            "role": "Роль в системе",
+            "commandRole": "Роль в команде",
+            "username": "Логин",
+            "firstname": "Имя",
+            "secondname": "Фамилия",
+            "surename": "Отчество",
             "email": "Email",
-            "mobilePhone": "Mobile Phone",
-            "organization": "Organization",
-            "department": "Department",
-            "country": "Country",
-            "streetAddress": "Street Address",
-            "postalCode": "Postal Code",
-            "city": "City",
-            "stateProvince": "State Province",
-            "rank": "Rank",
-            "completedTasks": "Completed Tasks"
+            "mobilePhone": "Мобильный телефон",
+            "organization": "Организация",
+            "department": "Департамент",
+            "country": "Страна",
+            "streetAddress": "Адрес",
+            "postalCode": "Почтовый индекс",
+            "city": "Город",
+            "stateProvince": "Область",
+            "rank": "Карма",
+            "completedTasks": "Выполненные задачи"
         }
     }
 }

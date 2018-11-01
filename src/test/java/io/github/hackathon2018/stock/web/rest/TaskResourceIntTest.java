@@ -55,6 +55,9 @@ public class TaskResourceIntTest {
     private static final TaskComplexity DEFAULT_COMPLEXITY = TaskComplexity.LOW;
     private static final TaskComplexity UPDATED_COMPLEXITY = TaskComplexity.MEDIUM;
 
+    private static final Integer DEFAULT_RESOURCES_COUNT = 1;
+    private static final Integer UPDATED_RESOURCES_COUNT = 2;
+
     private static final Boolean DEFAULT_NEW_INTEGRATIONS = false;
     private static final Boolean UPDATED_NEW_INTEGRATIONS = true;
 
@@ -110,6 +113,7 @@ public class TaskResourceIntTest {
             .system(DEFAULT_SYSTEM)
             .subsystem(DEFAULT_SUBSYSTEM)
             .complexity(DEFAULT_COMPLEXITY)
+            .resourcesCount(DEFAULT_RESOURCES_COUNT)
             .newIntegrations(DEFAULT_NEW_INTEGRATIONS)
             .modifyIntegrations(DEFAULT_MODIFY_INTEGRATIONS)
             .newPrintForms(DEFAULT_NEW_PRINT_FORMS)
@@ -142,6 +146,7 @@ public class TaskResourceIntTest {
         assertThat(testTask.getSystem()).isEqualTo(DEFAULT_SYSTEM);
         assertThat(testTask.getSubsystem()).isEqualTo(DEFAULT_SUBSYSTEM);
         assertThat(testTask.getComplexity()).isEqualTo(DEFAULT_COMPLEXITY);
+        assertThat(testTask.getResourcesCount()).isEqualTo(DEFAULT_RESOURCES_COUNT);
         assertThat(testTask.isNewIntegrations()).isEqualTo(DEFAULT_NEW_INTEGRATIONS);
         assertThat(testTask.isModifyIntegrations()).isEqualTo(DEFAULT_MODIFY_INTEGRATIONS);
         assertThat(testTask.isNewPrintForms()).isEqualTo(DEFAULT_NEW_PRINT_FORMS);
@@ -183,6 +188,7 @@ public class TaskResourceIntTest {
             .andExpect(jsonPath("$.[*].system").value(hasItem(DEFAULT_SYSTEM.toString())))
             .andExpect(jsonPath("$.[*].subsystem").value(hasItem(DEFAULT_SUBSYSTEM.toString())))
             .andExpect(jsonPath("$.[*].complexity").value(hasItem(DEFAULT_COMPLEXITY.toString())))
+            .andExpect(jsonPath("$.[*].resourcesCount").value(hasItem(DEFAULT_RESOURCES_COUNT)))
             .andExpect(jsonPath("$.[*].newIntegrations").value(hasItem(DEFAULT_NEW_INTEGRATIONS.booleanValue())))
             .andExpect(jsonPath("$.[*].modifyIntegrations").value(hasItem(DEFAULT_MODIFY_INTEGRATIONS.booleanValue())))
             .andExpect(jsonPath("$.[*].newPrintForms").value(hasItem(DEFAULT_NEW_PRINT_FORMS.booleanValue())))
@@ -205,6 +211,7 @@ public class TaskResourceIntTest {
             .andExpect(jsonPath("$.system").value(DEFAULT_SYSTEM.toString()))
             .andExpect(jsonPath("$.subsystem").value(DEFAULT_SUBSYSTEM.toString()))
             .andExpect(jsonPath("$.complexity").value(DEFAULT_COMPLEXITY.toString()))
+            .andExpect(jsonPath("$.resourcesCount").value(DEFAULT_RESOURCES_COUNT))
             .andExpect(jsonPath("$.newIntegrations").value(DEFAULT_NEW_INTEGRATIONS.booleanValue()))
             .andExpect(jsonPath("$.modifyIntegrations").value(DEFAULT_MODIFY_INTEGRATIONS.booleanValue()))
             .andExpect(jsonPath("$.newPrintForms").value(DEFAULT_NEW_PRINT_FORMS.booleanValue()))
@@ -237,6 +244,7 @@ public class TaskResourceIntTest {
             .system(UPDATED_SYSTEM)
             .subsystem(UPDATED_SUBSYSTEM)
             .complexity(UPDATED_COMPLEXITY)
+            .resourcesCount(UPDATED_RESOURCES_COUNT)
             .newIntegrations(UPDATED_NEW_INTEGRATIONS)
             .modifyIntegrations(UPDATED_MODIFY_INTEGRATIONS)
             .newPrintForms(UPDATED_NEW_PRINT_FORMS)
@@ -256,6 +264,7 @@ public class TaskResourceIntTest {
         assertThat(testTask.getSystem()).isEqualTo(UPDATED_SYSTEM);
         assertThat(testTask.getSubsystem()).isEqualTo(UPDATED_SUBSYSTEM);
         assertThat(testTask.getComplexity()).isEqualTo(UPDATED_COMPLEXITY);
+        assertThat(testTask.getResourcesCount()).isEqualTo(UPDATED_RESOURCES_COUNT);
         assertThat(testTask.isNewIntegrations()).isEqualTo(UPDATED_NEW_INTEGRATIONS);
         assertThat(testTask.isModifyIntegrations()).isEqualTo(UPDATED_MODIFY_INTEGRATIONS);
         assertThat(testTask.isNewPrintForms()).isEqualTo(UPDATED_NEW_PRINT_FORMS);

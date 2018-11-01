@@ -1,0 +1,29 @@
+{
+    "name": "Performers",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "performers"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "request",
+            "otherEntityName": "request",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181101075659",
+    "entityTableName": "performers",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
