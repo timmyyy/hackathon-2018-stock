@@ -4,6 +4,8 @@ import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Notification;
 import io.github.hackathon2018.stock.repository.NotificationRepository;
+import io.github.hackathon2018.stock.service.NotificationService;
+import io.github.hackathon2018.stock.service.UserService;
 import io.github.hackathon2018.stock.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -66,10 +68,13 @@ public class NotificationResourceIntTest {
 
     private Notification notification;
 
+    @Autowired
+    private NotificationService notificationService;
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final NotificationResource notificationResource = new NotificationResource(notificationRepository);
+        final NotificationResource notificationResource = new NotificationResource(notificationService, notificationRepository);
         this.restNotificationMockMvc = MockMvcBuilders.standaloneSetup(notificationResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

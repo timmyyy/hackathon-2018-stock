@@ -3,12 +3,12 @@ import { Translate, translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { AvForm, AvField, AvRadioGroup, AvGroup, AvRadio } from 'availity-reactstrap-validation';
 import { Row, Col, Alert, Button, Label } from 'reactstrap';
-
+import { RouteComponentProps } from 'react-router-dom';
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
 import { IRootState } from 'app/shared/reducers';
 import { handleRegister, reset } from './register.reducer';
 
-export interface IRegisterProps extends StateProps, DispatchProps {}
+export interface IRegisterProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export interface IRegisterState {
   password: string;
@@ -32,6 +32,7 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
 
   handleValidSubmit = (event, values) => {
     this.props.handleRegister(values, this.props.currentLocale);
+    this.handleClose();
 
     event.preventDefault();
   };
@@ -42,6 +43,10 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
 
   onRadioChange = event => {
     this.setState({ role: event.target.value });
+  };
+
+  handleClose = () => {
+    this.props.history.push('/');
   };
 
   render() {

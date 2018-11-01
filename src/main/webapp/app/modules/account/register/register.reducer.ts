@@ -46,13 +46,23 @@ export default (state: RegisterState = initialState, action): RegisterState => {
 };
 
 // Actions
-export const handleRegister = (values, langKey = 'en') => ({
-  type: ACTION_TYPES.CREATE_ACCOUNT,
-  payload: axios.post('api/register', { ...values, langKey }),
-  meta: {
-    successMessage: translate('register.messages.success')
-  }
-});
+export const handleRegister = (values, langKey = 'en') => {
+  const dataForEmployer = values;
+  const dataForRegister = { ...values, langKey };
+
+  dataForRegister.login = values.username;
+  dataForRegister.password = values.firstPassword;
+
+  return {
+    type: ACTION_TYPES.CREATE_ACCOUNT,
+    payload: axios.post('api/register', dataForRegister).then(() => {
+      axios.post('api/employees', dataForEmployer);
+    }),
+    meta: {
+      successMessage: translate('register.messages.success')
+    }
+  };
+};
 
 export const reset = () => ({
   type: ACTION_TYPES.RESET

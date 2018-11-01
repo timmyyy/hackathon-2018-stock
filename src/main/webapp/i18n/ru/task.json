@@ -3,31 +3,31 @@
     "jhipsterApp": {
         "task" : {
             "home": {
-                "title": "Tasks",
-                "createLabel": "Создать новый Task",
-                "createOrEditLabel": "Создать или отредактировать Task"
+                "title": "Задачи",
+                "createLabel": "Создать новую заадчу",
+                "createOrEditLabel": "Создать или отредактировать задачу"
             },
-            "created": "Новый Task создан с идентификатором {{ param }}",
-            "updated": "Task обновлен с идентификатором {{ param }}",
-            "deleted": "Task удален с идентификатором {{ param }}",
+            "created": "Новая задача создана",
+            "updated": "Задача обновлена",
+            "deleted": "Задача удалена",
             "delete": {
-                "question": "Вы уверены что хотите удалить Task {{ id }}?"
+                "question": "Вы уверены что хотите удалить задачу?"
             },
             "detail": {
-                "title": "Task"
+                "title": "Задача"
             },
-            "originalText": "Original Text",
-            "commaSeparatedKeywords": "Comma Separated Keywords",
-            "system": "System",
-            "subsystem": "Subsystem",
-            "complexity": "Complexity",
-            "resourcesCount": "Resources Count",
-            "newIntegrations": "New Integrations",
-            "modifyIntegrations": "Modify Integrations",
-            "newPrintForms": "New Print Forms",
-            "modifyPrintForms": "Modify Print Forms",
-            "request": "Request",
-            "performer": "Performer"
+            "originalText": "Описание",
+            "commaSeparatedKeywords": "Ключевые слова",
+            "system": "Система",
+            "subsystem": "Подсистема",
+            "complexity": "Сложность",
+            "resourcesCount": "Число людей для выполнения задачи",
+            "newIntegrations": "Новые интеграции",
+            "modifyIntegrations": "Изменение интеграций",
+            "newPrintForms": "Новые печатные формы",
+            "modifyPrintForms": "Изменение печатных форм",
+            "request": "Заявка",
+            "performer": "Исполнитель"
         }
     }
 }
