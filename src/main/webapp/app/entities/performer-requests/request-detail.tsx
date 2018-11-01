@@ -93,7 +93,7 @@ export class RequestDetail extends React.Component<IRequestDetailProps> {
             <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Закрыть</span>
           </Button>
           &nbsp;
-          <Button replace color="primary">
+          <Button replace color="primary" onClick={() => this.props.onOk()}>
             <FontAwesomeIcon icon="anchor" /> <span className="d-none d-md-inline">Откликнуться</span>
           </Button>
         </Col>
