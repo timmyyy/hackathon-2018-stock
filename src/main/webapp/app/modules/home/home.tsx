@@ -21,12 +21,13 @@ export class Home extends React.Component<IHomeProp> {
     const { account } = this.props;
     return (
       <Row>
-        <Col md="9">
+        <Col md="12">
           {account && account.login ? (
             <CustomerHome />
           ) : (
             <div>
               <Alert color="warning">
+                <h4>Добро пожаловать на STOCK!</h4>
                 <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>
                 &nbsp;
                 <Link to="/register" className="alert-link">
