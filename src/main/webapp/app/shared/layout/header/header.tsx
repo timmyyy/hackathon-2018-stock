@@ -3,7 +3,7 @@ import React from 'react';
 import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
 import { Brand } from './header-components';
-import { AdminMenu, AccountMenu } from './menus';
+import { AdminMenu, AccountMenu, EntitiesMenu } from './menus';
 import { PerformerMenu } from 'app/shared/layout/header/menus/performer';
 import { EmployeeRole } from 'app/shared/model/employee.model';
 
