@@ -22,15 +22,10 @@ export class Home extends React.Component<IHomeProp> {
 
     return (
       <Row>
-        <Col
-          md="12"
-          style={{
-            background: !isAuthenticated
-              ? 'url(https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg) center center'
-              : '',
-            minHeight: 600
-          }}
-        >
+        <Col md="12" style={{
+          background: !isAuthenticated ? "url(https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg) center center" : "",
+          minHeight: 600
+        }}>
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
