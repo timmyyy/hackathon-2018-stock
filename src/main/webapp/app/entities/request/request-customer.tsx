@@ -2,15 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-// tslint:disable-next-line:no-unused-variable
-import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
+import { Translate, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './request.reducer';
-import { IRequest } from 'app/shared/model/request.model';
-// tslint:disable-next-line:no-unused-variable
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+import { APP_DATE_FORMAT } from 'app/config/constants';
 
 export interface IRequestProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -20,50 +16,36 @@ export class Request extends React.Component<IRequestProps> {
   }
 
   render() {
-    const { requestList, match } = this.props;
+    const { requests, match, account } = this.props;
+    const customerRequests = requests.filter(request => {
+      return request.customer.username === account.login.toLocaleLowerCase();
+    });
+
     return (
       <div>
         <h2 id="request-heading">
-          <Translate contentKey="jhipsterApp.request.home.title">Requests</Translate>
-          <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
+          Заявки
+          <Link to={'/entity/request/new'} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
             <FontAwesomeIcon icon="plus" />
-            &nbsp;
-            <Translate contentKey="jhipsterApp.request.home.createLabel">Create new Request</Translate>
+            &nbsp;Создать заявку
           </Link>
         </h2>
         <div className="table-responsive">
           <Table responsive>
             <thead>
               <tr>
-                <th>
-                  <Translate contentKey="global.field.id">ID</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.createTime">Create Time</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.closeTime">Close Time</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.changeTime">Change Time</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.status">Status</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.customer">Customer</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.task">Task</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterApp.request.feedback">Feedback</Translate>
-                </th>
-                <th />
+                <th>№</th>
+                <th>Время создания</th>
+                <th>Время закрытия</th>
+                <th>Время изменения</th>
+                <th>Статус</th>
+                <th>Заказчик</th>
+                <th>Задача</th>
+                <th>Обратная связь</th>
               </tr>
             </thead>
             <tbody>
-              {requestList.map((request, i) => (
+              {customerRequests.map((request, i) => (
                 <tr key={`entity-${i}`}>
                   <td>
                     <Button tag={Link} to={`${match.url}/${request.id}`} color="link" size="sm">
@@ -117,8 +99,9 @@ export class Request extends React.Component<IRequestProps> {
   }
 }
 
-const mapStateToProps = ({ request }: IRootState) => ({
-  requestList: request.entities
+const mapStateToProps = ({ request, authentication }: IRootState) => ({
+  requests: request.entities,
+  account: authentication.account
 });
 
 const mapDispatchToProps = {
