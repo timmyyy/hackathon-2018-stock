@@ -35,9 +35,6 @@ export class Request extends React.Component<IRequestProps> {
             <thead>
               <tr>
                 <th>№</th>
-                <th>Время создания</th>
-                <th>Время закрытия</th>
-                <th>Время изменения</th>
                 <th>Статус</th>
                 <th>Заказчик</th>
                 <th>Задача</th>
@@ -51,15 +48,6 @@ export class Request extends React.Component<IRequestProps> {
                     <Button tag={Link} to={`${match.url}/${request.id}`} color="link" size="sm">
                       {request.id}
                     </Button>
-                  </td>
-                  <td>
-                    <TextFormat type="date" value={request.createTime} format={APP_DATE_FORMAT} />
-                  </td>
-                  <td>
-                    <TextFormat type="date" value={request.closeTime} format={APP_DATE_FORMAT} />
-                  </td>
-                  <td>
-                    <TextFormat type="date" value={request.changeTime} format={APP_DATE_FORMAT} />
                   </td>
                   <td>
                     <Translate contentKey={`jhipsterApp.RequestStatus.${request.status}`} />
