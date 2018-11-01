@@ -104,6 +104,11 @@ export const getEntities: ICrudGetAllAction<ITask> = (page, size, sort) => ({
   payload: axios.get<ITask>(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
 });
 
+export const getTomato: ICrudGetAllAction<ITask> = text => ({
+  type: ACTION_TYPES.UPDATE_TASK,
+  payload: axios.post<ITask>(`api/tasks/from/txt?cacheBuster=${new Date().getTime()}`, { text })
+});
+
 export const getEntity: ICrudGetAction<ITask> = id => {
   const requestUrl = `${apiUrl}/${id}`;
   return {
