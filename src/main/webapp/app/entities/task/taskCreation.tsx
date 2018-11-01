@@ -46,10 +46,12 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
       };
 
       this.props.createEntity(entity);
-      this.props.createRequest({
-        status: RequestStatus.NEW,
-        task: entity
-      });
+      setTimeout(() => {
+        this.props.createRequest({
+          status: RequestStatus.NEW,
+          task: entity
+        });
+      }, 2000);
     }
   };
 
