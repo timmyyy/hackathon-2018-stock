@@ -8,6 +8,7 @@ import { getSession } from 'app/shared/reducers/authentication';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import PerformerHome from 'app/modules/home/performerHome';
 import { EmployeeRole } from 'app/shared/model/employee.model';
+import CustomerProfile from 'app/shared/CustomerProfile';
 
 export interface IHomeProp extends StateProps, DispatchProps {}
 

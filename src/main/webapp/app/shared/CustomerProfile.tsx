@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Breadcrumb, BreadcrumbItem, Col, Row } from "reactstrap";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Breadcrumb, BreadcrumbItem, Col, Row } from 'reactstrap';
 
 export class CustomerProfile extends React.Component {
-  render () {
+  render() {
     const { profile } = this.props;
 
     return (
@@ -11,12 +11,14 @@ export class CustomerProfile extends React.Component {
         <Col md={12}>
           <h2>Профиль заказчика</h2>
           <Breadcrumb>
-            <BreadcrumbItem><a href="#">Главная</a></BreadcrumbItem>
+            <BreadcrumbItem>
+              <a href="#">Главная</a>
+            </BreadcrumbItem>
             <BreadcrumbItem active>Профиль заказчика</BreadcrumbItem>
           </Breadcrumb>
         </Col>
         <Col md={4}>
-          <img src="https://picsum.photos/200/200" style={{ width: "100%" }}/>
+          <img src="https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png" style={{ width: '100%' }} />
         </Col>
         <Col md={8}>
           <h4>ФИО:</h4>
@@ -39,15 +41,18 @@ export class CustomerProfile extends React.Component {
 
 const mapStateToProps = state => ({
   profile: {
-    fio: "Иванов Иван Иванович",
-    organization: "СберТех",
-    rank: "Руководитель",
-    department: "Департамент развития фронтальных систем",
-    mobilePhone: "+7 923 443-44-33",
-    workAddress: "Кутузовский пр-т 32, корпус 1"
+    fio: 'Иванов Иван Иванович',
+    organization: 'СберТех',
+    rank: 'Руководитель',
+    department: 'Департамент развития фронтальных систем',
+    mobilePhone: '+7 923 443-44-33',
+    workAddress: 'Кутузовский пр-т 32, корпус 1'
   }
 });
 
 const mapDispatchToProps = {};
 
-export default connect ( mapStateToProps, mapDispatchToProps ) ( CustomerProfile );
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CustomerProfile);
