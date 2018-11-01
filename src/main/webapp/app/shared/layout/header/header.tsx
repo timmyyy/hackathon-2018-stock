@@ -2,10 +2,13 @@ import './header.css';
 import React from 'react';
 import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
-import { Brand } from './header-components';
+import { Brand, NewLink } from './header-components';
 import { AdminMenu, AccountMenu, EntitiesMenu } from './menus';
 import { PerformerMenu } from 'app/shared/layout/header/menus/performer';
 import { EmployeeRole } from 'app/shared/model/employee.model';
+import { NavLink as Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Translate from 'react-jhipster/lib/src/language/translate';
 import { NewLink } from 'app/shared/layout/header/header-components';
 
 export interface IHeaderProps {
@@ -50,12 +53,13 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
           <Collapse isOpen={this.state.menuOpen} navbar>
             <Nav id="header-tabs" className="ml-auto" navbar>
               {/*<Home />*/}
+              {isAuthenticated && isCustomer && <NewLink to="/customer" title={'Мой профиль'} icon={'list'} />}
               {isAuthenticated && isPerformer && <NewLink to="/performer" title={'Мой профиль'} icon={'list'} />}
-              {isAuthenticated && !isPerformer && <NewLink to="/customer" title={'Мой профиль'} icon={'list'} />}
               {isAuthenticated && isPerformer && <PerformerMenu />}
               {isAuthenticated && isAdmin && <EntitiesMenu />}
               {isAuthenticated && isAdmin && <AdminMenu showSwagger={isSwaggerEnabled} showDatabase={!isInProduction} />}
-              <AccountMenu isAuthenticated={isAuthenticated} />
+              {isAuthenticated && <AccountMenu isAuthenticated={isAuthenticated} />}
+              {!isAuthenticated && <NewLink to="/login" icon="sign-in-alt" title={'Войти'} />}
             </Nav>
           </Collapse>
         </Navbar>
