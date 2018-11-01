@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Respond;
 import io.github.hackathon2018.stock.repository.RespondRepository;
@@ -37,7 +37,7 @@ import io.github.hackathon2018.stock.domain.enumeration.ResponseStatus;
  * @see RespondResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class RespondResourceIntTest {
 
     private static final ResponseStatus DEFAULT_STATUS = ResponseStatus.NEW;
