@@ -2,8 +2,11 @@ package io.github.hackathon2018.stock.service;
 
 import io.github.hackathon2018.stock.config.Constants;
 import io.github.hackathon2018.stock.domain.Authority;
+import io.github.hackathon2018.stock.domain.Employee;
 import io.github.hackathon2018.stock.domain.User;
+import io.github.hackathon2018.stock.domain.enumeration.EmployeeRole;
 import io.github.hackathon2018.stock.repository.AuthorityRepository;
+import io.github.hackathon2018.stock.repository.EmployeeRepository;
 import io.github.hackathon2018.stock.repository.UserRepository;
 import io.github.hackathon2018.stock.security.AuthoritiesConstants;
 import io.github.hackathon2018.stock.security.SecurityUtils;
@@ -37,14 +40,17 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final EmployeeRepository employeeRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, EmployeeRepository employeeRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
+        this.employeeRepository = employeeRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
@@ -118,8 +124,15 @@ public class UserService {
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+        Employee newEmployee = new Employee();
+        newEmployee.setFirstname(newUser.getFirstName());
+        newEmployee.setSurename(newUser.getLastName());
+        newEmployee.setUsername(newUser.getLogin());
+        newEmployee.setEmail(newUser.getEmail());
+        newEmployee.setRole(EmployeeRole.valueOf(userDTO.getRole()));
+        employeeRepository.save(newEmployee);
         this.clearUserCaches(newUser);
-        log.debug("Created Information for User: {}", newUser);
+        log.debug("Created Information for User: {} \n and Employee: {}", newUser, newEmployee);
         return newUser;
     }
     private boolean removeNonActivatedUser(User existingUser){
