@@ -2,8 +2,11 @@ package io.github.hackathon2018.stock.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import io.github.hackathon2018.stock.domain.Notification;
+import io.github.hackathon2018.stock.domain.Request;
+import io.github.hackathon2018.stock.repository.EmployeeRepository;
 import io.github.hackathon2018.stock.repository.NotificationRepository;
-import io.github.hackathon2018.stock.service.NotificationService;
+import io.github.hackathon2018.stock.repository.RequestRepository;
+import io.github.hackathon2018.stock.service.dto.NotificationsToEmployeesDTO;
 import io.github.hackathon2018.stock.web.rest.errors.BadRequestAlertException;
 import io.github.hackathon2018.stock.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -15,8 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * REST controller for managing Notification.
@@ -29,12 +31,16 @@ public class NotificationResource {
 
     private static final String ENTITY_NAME = "notification";
 
-    private final NotificationService notificationService;
     private final NotificationRepository notificationRepository;
+    private EmployeeRepository employeeRepository;
+    private RequestRepository requestRepository;
 
-    public NotificationResource(NotificationService notificationService, NotificationRepository notificationRepository) {
-        this.notificationService = notificationService;
+    public NotificationResource(NotificationRepository notificationRepository,
+                                EmployeeRepository employeeRepository,
+                                RequestRepository requestRepository) {
         this.notificationRepository = notificationRepository;
+        this.employeeRepository = employeeRepository;
+        this.requestRepository = requestRepository;
     }
 
     /**
@@ -118,5 +124,29 @@ public class NotificationResource {
 
         notificationRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @PostMapping("/notificationsToEmployees")
+    @Timed
+    public ResponseEntity<Void> createNotificationsByEmployeeIds(@RequestBody NotificationsToEmployeesDTO dto) {
+        log.debug("REST request createNotificationsByEmployeeIds : {}", dto);
+
+        ArrayList<Notification> notifications = new ArrayList<>();
+        StringBuilder employeeToLog = new StringBuilder();
+        Optional<Request> request = requestRepository.findById(dto.getRequestId());
+
+        employeeRepository.findAllById(dto.getEmployeeIds())
+            .forEach(employee -> {
+                employeeToLog.append(employee.getUsername()).append(" ");
+                notifications.add(new Notification()
+                    .employee(employee)
+                    .request(request.orElse(null)));
+            });
+
+        notificationRepository.saveAll(notifications);
+
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createAlert(ENTITY_NAME + "s for users:", employeeToLog.toString()))
+            .build();
     }
 }

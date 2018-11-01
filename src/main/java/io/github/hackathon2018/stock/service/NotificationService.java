@@ -1,7 +1,7 @@
 package io.github.hackathon2018.stock.service;
 
 import io.github.hackathon2018.stock.repository.NotificationRepository;
-import io.github.hackathon2018.stock.service.dto.NotificationDTO;
+import io.github.hackathon2018.stock.service.dto.NotificationsToEmployeesDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,6 @@ public class NotificationService {
      * Send notification
      * @param notification
      */
-    public void sendNotification(NotificationDTO notification) {
-
+    public void send(NotificationsToEmployeesDTO notification) {
     }
 }
