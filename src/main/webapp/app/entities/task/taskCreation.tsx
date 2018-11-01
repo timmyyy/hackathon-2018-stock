@@ -3,22 +3,26 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
-import { Translate} from 'react-jhipster';
+import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity, updateEntity, createEntity, reset } from './task.reducer';
 
 export interface ITaskUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export interface ITaskUpdateState {
-}
+export interface ITaskUpdateState {}
+
+const COMPLEXITY = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD'
+};
 
 export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateState> {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -87,20 +91,14 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                   <Label id="complexityLabel">
                     <Translate contentKey="jhipsterApp.task.complexity">Complexity</Translate>
                   </Label>
-                  <AvInput
-                    id="task-complexity"
-                    type="select"
-                    className="form-control"
-                    name="complexity"
-                    value={'LOW'}
-                  >
-                    <option value="LOW">
+                  <AvInput id="task-complexity" type="select" className="form-control" name="complexity" value={COMPLEXITY.LOW}>
+                    <option value={COMPLEXITY.LOW}>
                       <Translate contentKey="jhipsterApp.TaskComplexity.LOW" />
                     </option>
-                    <option value="MEDIUM">
+                    <option value={COMPLEXITY.MEDIUM}>
                       <Translate contentKey="jhipsterApp.TaskComplexity.MEDIUM" />
                     </option>
-                    <option value="HARD">
+                    <option value={COMPLEXITY.HARD}>
                       <Translate contentKey="jhipsterApp.TaskComplexity.HARD" />
                     </option>
                   </AvInput>
@@ -135,7 +133,7 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                     <Translate contentKey="jhipsterApp.task.modifyPrintForms">Modify Print Forms</Translate>
                   </Label>
                 </AvGroup>
-                <Button tag={Link} id="cancel-save" to="/entity/task" replace color="info">
+                <Button tag={Link} id="cancel-save" to="/" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />
                   &nbsp;
                   <span className="d-none d-md-inline">
