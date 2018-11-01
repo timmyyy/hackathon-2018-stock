@@ -17,7 +17,7 @@ export const NavDropdown = props => (
 
 export const Brand = props => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
-    <span className="brand-title">Stock App</span>
+    <span className="brand-title">Новая Лига</span>
   </NavbarBrand>
 );
 

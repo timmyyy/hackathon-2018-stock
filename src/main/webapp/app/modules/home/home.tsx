@@ -2,7 +2,7 @@ import './home.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Alert, Col, Row } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Alert, Col, Row } from 'reactstrap';
 import { getSession } from 'app/shared/reducers/authentication';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import PerformerHome from 'app/modules/home/performerHome';
@@ -22,12 +22,20 @@ export class Home extends React.Component<IHomeProp> {
 
     return (
       <Row>
-        <Col md="12" style={{
-          background: !isAuthenticated ? "url(https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg) center center" : "",
-          minHeight: 600
-        }}>
+        <Col
+          md="12"
+          style={{
+            background: !isAuthenticated
+              ? 'url(https://insights.dice.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg) center center'
+              : '',
+            minHeight: 600
+          }}
+        >
           {isAuthenticated ? (
             <div>
+              <Breadcrumb>
+                <BreadcrumbItem active>Главная</BreadcrumbItem>
+              </Breadcrumb>
               <h2>Здравствуйте, {account.login}!</h2>
               <ul>
                 {employee &&
@@ -37,7 +45,7 @@ export class Home extends React.Component<IHomeProp> {
                     </li>
                   )}
                 {employee &&
-                  employee.role === 'CUSTOMER' && (
+                  employee.role === EmployeeRole.CUSTOMER && (
                     <li>
                       <Link to={'/entity/customer-requests'}>Мои заявки</Link>
                     </li>
