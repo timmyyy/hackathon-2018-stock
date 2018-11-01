@@ -2,18 +2,16 @@ package io.github.hackathon2018.stock.service;
 
 import io.github.hackathon2018.stock.config.Constants;
 import io.github.hackathon2018.stock.domain.Authority;
-import io.github.hackathon2018.stock.domain.Employee;
 import io.github.hackathon2018.stock.domain.User;
-import io.github.hackathon2018.stock.domain.enumeration.EmployeeRole;
 import io.github.hackathon2018.stock.repository.AuthorityRepository;
-import io.github.hackathon2018.stock.repository.EmployeeRepository;
 import io.github.hackathon2018.stock.repository.UserRepository;
 import io.github.hackathon2018.stock.security.AuthoritiesConstants;
 import io.github.hackathon2018.stock.security.SecurityUtils;
 import io.github.hackathon2018.stock.service.dto.UserDTO;
 import io.github.hackathon2018.stock.service.util.RandomUtil;
-import io.github.hackathon2018.stock.web.rest.errors.*;
-
+import io.github.hackathon2018.stock.web.rest.errors.EmailAlreadyUsedException;
+import io.github.hackathon2018.stock.web.rest.errors.InvalidPasswordException;
+import io.github.hackathon2018.stock.web.rest.errors.LoginAlreadyUsedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -40,17 +38,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final EmployeeRepository employeeRepository;
-
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, EmployeeRepository employeeRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
-        this.employeeRepository = employeeRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
@@ -117,27 +112,23 @@ public class UserService {
         newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
-        newUser.setActivated(false);
+        //newUser.setActivated(false);
         // new user gets registration key
+        newUser.setActivated(true);
+        newUser.setActivationKey(null);
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
-        Employee newEmployee = new Employee();
-        newEmployee.setFirstname(newUser.getFirstName());
-        newEmployee.setSurename(newUser.getLastName());
-        newEmployee.setUsername(newUser.getLogin());
-        newEmployee.setEmail(newUser.getEmail());
-        newEmployee.setRole(EmployeeRole.valueOf(userDTO.getRole()));
-        employeeRepository.save(newEmployee);
         this.clearUserCaches(newUser);
-        log.debug("Created Information for User: {} \n and Employee: {}", newUser, newEmployee);
+        log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
-    private boolean removeNonActivatedUser(User existingUser){
-        if(existingUser.getActivated()) {
-             return false;
+
+    private boolean removeNonActivatedUser(User existingUser) {
+        if (existingUser.getActivated()) {
+            return false;
         }
         userRepository.delete(existingUser);
         userRepository.flush();
@@ -180,10 +171,10 @@ public class UserService {
      * Update basic information (first name, last name, email, language) for the current user.
      *
      * @param firstName first name of user
-     * @param lastName last name of user
-     * @param email email id of user
-     * @param langKey language key
-     * @param imageUrl image URL of user
+     * @param lastName  last name of user
+     * @param email     email id of user
+     * @param langKey   language key
+     * @param imageUrl  image URL of user
      */
     public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
         SecurityUtils.getCurrentUserLogin()
