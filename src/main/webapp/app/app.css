@@ -170,7 +170,7 @@ http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
 
 // Fix checkbox alignment https://github.com/jhipster/generator-jhipster/issues/8463
 .form-check-input {
-  margin-top: -0.5rem;
+  margin: -7px 0 0 -22px;
 }
 
 /* Makes toolbar not wrap on smaller screens
