@@ -40,12 +40,7 @@ export class Home extends React.Component<IHomeProp> {
                       <Link to={'/entity/customer-requests'}>Мои заявки</Link>
                     </li>
                   )}
-                {employee &&
-                  employee.role === EmployeeRole.PERFORMER && (
-                    <li>
-                      <PerformerHome />
-                    </li>
-                  )}
+                {employee && employee.role === EmployeeRole.PERFORMER && <PerformerHome />}
               </ul>
             </div>
           ) : (

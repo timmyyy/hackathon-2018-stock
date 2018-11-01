@@ -2,16 +2,16 @@
     "jhipsterApp": {
         "RequestStatus" : {
             "null": "",
-            "NEW": "NEW",
-            "PERFORMERS_REQUESTED": "PERFORMERS_REQUESTED",
-            "PERFORMERS_ACCEPTED": "PERFORMERS_ACCEPTED",
+            "NEW": "Новая",
+            "PERFORMERS_REQUESTED": "Поиск",
+            "PERFORMERS_ACCEPTED": "Принята",
             "PERFORMERS_SELECTED": "PERFORMERS_SELECTED",
             "PERFORMER_CONFIRMED": "PERFORMER_CONFIRMED",
             "ANALYSIS": "ANALYSIS",
             "APPROVAL": "APPROVAL",
             "DEVELOPMENT": "DEVELOPMENT",
             "TESTING": "TESTING",
-            "IN_PROGRESS": "IN_PROGRESS",
+            "IN_PROGRESS": "Идет реализация",
             "DONE": "DONE"
         }
     }
