@@ -1,11 +1,10 @@
 package io.github.hackathon2018.stock.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import io.github.hackathon2018.stock.domain.Employee;
 import io.github.hackathon2018.stock.domain.Performers;
 import io.github.hackathon2018.stock.domain.Task;
 import io.github.hackathon2018.stock.repository.PerformersRepository;
-import io.github.hackathon2018.stock.service.PerformersService;
+import io.github.hackathon2018.stock.service.EmployeeService;
 import io.github.hackathon2018.stock.web.rest.errors.BadRequestAlertException;
 import io.github.hackathon2018.stock.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -31,11 +30,9 @@ public class PerformersResource {
 
     private static final String ENTITY_NAME = "performers";
 
-    private final PerformersService performersService;
     private final PerformersRepository performersRepository;
 
-    public PerformersResource(PerformersService performersService, PerformersRepository performersRepository) {
-        this.performersService = performersService;
+    public PerformersResource(PerformersRepository performersRepository) {
         this.performersRepository = performersRepository;
     }
 
@@ -120,19 +117,5 @@ public class PerformersResource {
 
         performersRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
-
-    @PostMapping("/search")
-    @Timed
-    public List<Performers> search(@RequestBody Task task){
-        log.debug(" search performers by task");
-        return performersService.search(task);
-    }
-
-    @GetMapping("/search/{keywords}")
-    @Timed
-    public List<Performers> search(@PathVariable String keywords){
-        log.debug(" search performers by keywords");
-        return performersService.search(keywords);
     }
 }

@@ -1,8 +1,9 @@
 package io.github.hackathon2018.stock.service;
 
+import io.github.hackathon2018.stock.domain.Employee;
 import io.github.hackathon2018.stock.domain.Performers;
 import io.github.hackathon2018.stock.domain.Task;
-import io.github.hackathon2018.stock.repository.PerformersRepository;
+import io.github.hackathon2018.stock.repository.EmployeeRepository;
 import org.apache.commons.text.similarity.JaccardSimilarity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +17,14 @@ import java.util.*;
  */
 @Service
 @Transactional
-public class PerformersService {
+public class EmployeeService {
 
-    private final Logger log = LoggerFactory.getLogger(PerformersService.class);
+    private final Logger log = LoggerFactory.getLogger(EmployeeService.class);
 
-    private final PerformersRepository performersRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public PerformersService(PerformersRepository performersRepository) {
-        this.performersRepository = performersRepository;
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     /**
@@ -32,22 +33,22 @@ public class PerformersService {
      * @param task
      * @return
      */
-    public List<Performers> search(Task task) {
+    public List<Employee> search(Task task) {
         log.debug("Search performers by task = " + task);
 
         return search(task.getCommaSeparatedKeywords());
     }
 
-    public List<Performers> search(String keyWords) {
+    public List<Employee> search(String keyWords) {
         log.debug("Search performers by keyWords = " + keyWords);
 
         JaccardSimilarity jaccardSimilarity = new JaccardSimilarity();
-        Map<Double, List<Performers>> distanceToTask = new TreeMap<>();
+        Map<Double, List<Employee>> distanceToTask = new TreeMap<>();
 
         String[] words = keyWordSplitter(keyWords);
-        for (Performers performers : performersRepository.findAll()) {
+        for (Employee employee : employeeRepository.findAll()) {
             Double distance = (double) 0;
-            for (Task task : performers.getEmployee().getCompletedTasks()) {
+            for (Task task : employee.getCompletedTasks()) {
                 String[] taskKeyWords = keyWordSplitter(task.getCommaSeparatedKeywords());
                 for (String searchWord : words) {
                     for (String word : taskKeyWords) {
@@ -55,17 +56,19 @@ public class PerformersService {
                     }
                 }
             }
-            List<Performers> performersList = distanceToTask.get(distance);
-            if (performersList != null) {
-                performersList.add(performers);
+            List<Employee> employeeList = distanceToTask.get(distance);
+            if (employeeList != null) {
+                employeeList.add(employee);
             } else {
-                List<Performers> newList = new ArrayList<>();
-                newList.add(performers);
-                distanceToTask.put(distance, newList);
+                if (distance > 0) {
+                    List<Employee> newList = new ArrayList<>();
+                    newList.add(employee);
+                    distanceToTask.put(distance, newList);
+                }
             }
         }
 
-        List<Performers> employeeList = new ArrayList(distanceToTask.values());
+        List<Employee> employeeList = new ArrayList(distanceToTask.values());
         if (employeeList.size() != 0) {
             Collections.reverse(employeeList);
         }
