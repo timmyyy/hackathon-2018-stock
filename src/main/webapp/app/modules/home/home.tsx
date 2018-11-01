@@ -34,6 +34,18 @@ export class Home extends React.Component<IHomeProp> {
                   <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
                 </Link>
               </Alert>
+              <p>Список форм для отладки</p>
+              <ul>
+                <li>
+                  <Link to={'/register'}>Регистрация</Link>
+                </li>
+                <li>
+                  <Link to={'/login'}>Авторизация</Link>
+                </li>
+                <li>
+                  <Link to={'/'}>Публикация заявки</Link>
+                </li>
+              </ul>
             </div>
           )}
         </Col>
