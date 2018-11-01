@@ -4,6 +4,7 @@ import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Employee;
 import io.github.hackathon2018.stock.repository.EmployeeRepository;
+import io.github.hackathon2018.stock.service.EmployeeService;
 import io.github.hackathon2018.stock.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -108,10 +109,13 @@ public class EmployeeResourceIntTest {
 
     private Employee employee;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EmployeeResource employeeResource = new EmployeeResource(employeeRepository);
+        final EmployeeResource employeeResource = new EmployeeResource(employeeService, employeeRepository);
         this.restEmployeeMockMvc = MockMvcBuilders.standaloneSetup(employeeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
