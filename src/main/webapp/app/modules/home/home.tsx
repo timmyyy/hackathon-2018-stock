@@ -24,8 +24,7 @@ export class Home extends React.Component<IHomeProp> {
 
     return (
       <Row>
-        <Col md="9">
-          <PerformerProfile />
+        <Col md="12">
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>

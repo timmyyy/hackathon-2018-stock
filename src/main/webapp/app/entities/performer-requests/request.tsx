@@ -43,8 +43,8 @@ export class Request extends React.Component<IRequestProps> {
                     <td>
                       <Translate contentKey={`jhipsterApp.RequestStatus.${request.status}`} />
                     </td>
-                    <td>{request.customer ? <Link to={`/entity/employee/${request.customer.id}`}>{request.customer.fio}</Link> : ''}</td>
-                    <td>{request.task ? <Link to={`/entity/performer-requests/${request.id}`}>{request.task.text}</Link> : ''}</td>
+                    <td>{request.customer ? <Link to={`/customer-profile`}>{request.customer.fio}</Link> : ''}</td>
+                    <td>{request.task ? request.task.text : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button

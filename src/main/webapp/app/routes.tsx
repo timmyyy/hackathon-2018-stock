@@ -15,7 +15,8 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import { AUTHORITIES } from 'app/config/constants';
 
 // import CreatTask from "app/shared/CreatTask"
-import CustomerProfile from "app/shared/CustomerProfile.tsx"
+import CustomerProfile from 'app/shared/CustomerProfile.tsx';
+import { PerformerProfile } from 'app/shared/PerformerProfile';
 // import CustomerTaskList from "app/shared/CustomerTaskList"
 // import Feedback from "app/shared/Feedback"
 // import PerformerProfile from "app/shared/PerformerProfile"
@@ -45,9 +46,9 @@ const Routes = () => (
       <PrivateRoute path="/admin" component={Admin} hasAnyAuthorities={[AUTHORITIES.ADMIN]} />
       <PrivateRoute path="/account" component={Account} hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]} />
       <PrivateRoute path="/entity" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} />
-      <ErrorBoundaryRoute path="/" component={Home} />
-
       <ErrorBoundaryRoute path="/customer-profile" component={CustomerProfile} />
+      <ErrorBoundaryRoute path="/performer-profile" component={PerformerProfile} />
+      <ErrorBoundaryRoute path="/" component={Home} />
     </Switch>
   </div>
 );
