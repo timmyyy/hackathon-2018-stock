@@ -10,12 +10,12 @@ export class CustomerProfile extends React.Component {
       <Row>
         <Col md={12}>
           <h2>Профиль заказчика</h2>
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <a href="#">Главная</a>
-            </BreadcrumbItem>
-            <BreadcrumbItem active>Профиль заказчика</BreadcrumbItem>
-          </Breadcrumb>
+          {/*<Breadcrumb>*/}
+          {/*<BreadcrumbItem>*/}
+          {/*<a href="#">Главная</a>*/}
+          {/*</BreadcrumbItem>*/}
+          {/*<BreadcrumbItem active>Профиль заказчика</BreadcrumbItem>*/}
+          {/*</Breadcrumb>*/}
         </Col>
         <Col md={4}>
           <img src="https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png" style={{ width: '100%' }} />

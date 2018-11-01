@@ -33,10 +33,12 @@ export class Home extends React.Component<IHomeProp> {
         >
           {isAuthenticated ? (
             <div>
-              <Breadcrumb>
-                <BreadcrumbItem active>Главная</BreadcrumbItem>
-              </Breadcrumb>
-              <h2>Здравствуйте, {account.login}!</h2>
+              {/*<Breadcrumb>*/}
+              {/*<BreadcrumbItem active>Главная</BreadcrumbItem>*/}
+              {/*</Breadcrumb>*/}
+              <h2>
+                Здравствуйте, {account.firstName} {account.lastName}!
+              </h2>
               <ul>
                 {employee &&
                   employee.role === EmployeeRole.CUSTOMER && (

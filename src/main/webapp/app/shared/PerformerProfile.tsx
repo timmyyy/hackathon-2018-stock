@@ -79,7 +79,7 @@ export class PerformerProfile extends React.Component {
 
 const mapStateToProps = state => ({
   profile: {
-    fio: 'Иванов Иван Иванович',
+    fio: 'Петров Петр Петрович',
     karma: '264',
     organization: 'СберТех',
     rank: 'Главный инженер',
