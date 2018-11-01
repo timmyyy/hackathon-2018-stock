@@ -63,10 +63,6 @@ export class RequestDetail extends React.Component<IRequestDetailProps> {
             </dt>
             <dd>{requestEntity.customer ? requestEntity.customer.id : ''}</dd>
             <dt>
-              <Translate contentKey="jhipsterApp.request.performer">Performer</Translate>
-            </dt>
-            <dd>{requestEntity.performer ? requestEntity.performer.id : ''}</dd>
-            <dt>
               <Translate contentKey="jhipsterApp.request.task">Task</Translate>
             </dt>
             <dd>{requestEntity.task ? requestEntity.task.id : ''}</dd>

@@ -44,6 +44,9 @@ public class Task implements Serializable {
     @Column(name = "complexity")
     private TaskComplexity complexity;
 
+    @Column(name = "resources_count")
+    private Integer resourcesCount;
+
     @Column(name = "new_integrations")
     private Boolean newIntegrations;
 
@@ -136,6 +139,19 @@ public class Task implements Serializable {
 
     public void setComplexity(TaskComplexity complexity) {
         this.complexity = complexity;
+    }
+
+    public Integer getResourcesCount() {
+        return resourcesCount;
+    }
+
+    public Task resourcesCount(Integer resourcesCount) {
+        this.resourcesCount = resourcesCount;
+        return this;
+    }
+
+    public void setResourcesCount(Integer resourcesCount) {
+        this.resourcesCount = resourcesCount;
     }
 
     public Boolean isNewIntegrations() {
@@ -246,6 +262,7 @@ public class Task implements Serializable {
             ", system='" + getSystem() + "'" +
             ", subsystem='" + getSubsystem() + "'" +
             ", complexity='" + getComplexity() + "'" +
+            ", resourcesCount=" + getResourcesCount() +
             ", newIntegrations='" + isNewIntegrations() + "'" +
             ", modifyIntegrations='" + isModifyIntegrations() + "'" +
             ", newPrintForms='" + isNewPrintForms() + "'" +

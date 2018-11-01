@@ -54,9 +54,6 @@ export class Request extends React.Component<IRequestProps> {
                   <Translate contentKey="jhipsterApp.request.customer">Customer</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="jhipsterApp.request.performer">Performer</Translate>
-                </th>
-                <th>
                   <Translate contentKey="jhipsterApp.request.task">Task</Translate>
                 </th>
                 <th>
@@ -86,7 +83,6 @@ export class Request extends React.Component<IRequestProps> {
                     <Translate contentKey={`jhipsterApp.RequestStatus.${request.status}`} />
                   </td>
                   <td>{request.customer ? <Link to={`employee/${request.customer.id}`}>{request.customer.id}</Link> : ''}</td>
-                  <td>{request.performer ? <Link to={`employee/${request.performer.id}`}>{request.performer.id}</Link> : ''}</td>
                   <td>{request.task ? <Link to={`task/${request.task.id}`}>{request.task.id}</Link> : ''}</td>
                   <td>{request.feedback ? <Link to={`feedback/${request.feedback.id}`}>{request.feedback.id}</Link> : ''}</td>
                   <td className="text-right">

@@ -21,6 +21,7 @@
             "system": "System",
             "subsystem": "Subsystem",
             "complexity": "Complexity",
+            "resourcesCount": "Resources Count",
             "newIntegrations": "New Integrations",
             "modifyIntegrations": "Modify Integrations",
             "newPrintForms": "New Print Forms",

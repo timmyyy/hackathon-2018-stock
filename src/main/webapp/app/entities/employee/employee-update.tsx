@@ -109,6 +109,40 @@ export class EmployeeUpdate extends React.Component<IEmployeeUpdateProps, IEmplo
                   </AvInput>
                 </AvGroup>
                 <AvGroup>
+                  <Label id="commandRoleLabel">
+                    <Translate contentKey="jhipsterApp.employee.commandRole">Command Role</Translate>
+                  </Label>
+                  <AvInput
+                    id="employee-commandRole"
+                    type="select"
+                    className="form-control"
+                    name="commandRole"
+                    value={(!isNew && employeeEntity.commandRole) || 'DEVELOPER'}
+                  >
+                    <option value="DEVELOPER">
+                      <Translate contentKey="jhipsterApp.CommandRole.DEVELOPER" />
+                    </option>
+                    <option value="SYSTEM_ANALYST">
+                      <Translate contentKey="jhipsterApp.CommandRole.SYSTEM_ANALYST" />
+                    </option>
+                    <option value="BUSINESS_ANALYST">
+                      <Translate contentKey="jhipsterApp.CommandRole.BUSINESS_ANALYST" />
+                    </option>
+                    <option value="PRODUCT_OWNER">
+                      <Translate contentKey="jhipsterApp.CommandRole.PRODUCT_OWNER" />
+                    </option>
+                    <option value="DEVOPS_ENGINEER">
+                      <Translate contentKey="jhipsterApp.CommandRole.DEVOPS_ENGINEER" />
+                    </option>
+                    <option value="HAND_TESTER">
+                      <Translate contentKey="jhipsterApp.CommandRole.HAND_TESTER" />
+                    </option>
+                    <option value="AUTO_TESTER">
+                      <Translate contentKey="jhipsterApp.CommandRole.AUTO_TESTER" />
+                    </option>
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
                   <Label id="usernameLabel" for="username">
                     <Translate contentKey="jhipsterApp.employee.username">Username</Translate>
                   </Label>

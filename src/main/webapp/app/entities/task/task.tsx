@@ -54,6 +54,9 @@ export class Task extends React.Component<ITaskProps> {
                   <Translate contentKey="jhipsterApp.task.complexity">Complexity</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="jhipsterApp.task.resourcesCount">Resources Count</Translate>
+                </th>
+                <th>
                   <Translate contentKey="jhipsterApp.task.newIntegrations">New Integrations</Translate>
                 </th>
                 <th>
@@ -86,6 +89,7 @@ export class Task extends React.Component<ITaskProps> {
                   <td>
                     <Translate contentKey={`jhipsterApp.TaskComplexity.${task.complexity}`} />
                   </td>
+                  <td>{task.resourcesCount}</td>
                   <td>{task.newIntegrations ? 'true' : 'false'}</td>
                   <td>{task.modifyIntegrations ? 'true' : 'false'}</td>
                   <td>{task.newPrintForms ? 'true' : 'false'}</td>
