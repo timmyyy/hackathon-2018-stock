@@ -54,6 +54,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             <Nav id="header-tabs" className="ml-auto" navbar>
               {/*<Home />*/}
               {isAuthenticated && isCustomer && <NewLink to="/customer" title={'Мой профиль'} icon={'list'} />}
+              {isAuthenticated && isPerformer && <NewLink to="/" title={'Уведомления'} icon={'list'} />}
               {isAuthenticated && isPerformer && <NewLink to="/performer" title={'Мой профиль'} icon={'list'} />}
               {isAuthenticated && isPerformer && <PerformerMenu />}
               {isAuthenticated && isAdmin && <EntitiesMenu />}

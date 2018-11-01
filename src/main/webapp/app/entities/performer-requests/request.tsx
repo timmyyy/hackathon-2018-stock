@@ -29,9 +29,19 @@ export class Request extends React.Component<IRequestProps> {
 
   render() {
     const { requestList } = this.props;
+
+    const onOk = () => {
+      selected = null;
+      requestSource.status = RequestStatus.PERFORMERS_ACCEPTED;
+
+      this.props.getEntities();
+    };
+
     return (
       <Row>
         <Col md={selected == null ? '12' : '6'}>
+          <h2>Заявки</h2>
+
           <div className="table-responsive">
             <Table responsive>
               <thead>
@@ -92,12 +102,7 @@ export class Request extends React.Component<IRequestProps> {
 
                 this.props.getEntities();
               }}
-              onOk={() => {
-                selected = null;
-                requestSource.status = RequestStatus.PERFORMERS_ACCEPTED;
-
-                this.props.getEntities();
-              }}
+              onOk={requestSource.status == RequestStatus.NEW && onOk}
             />
           </Col>
         )}
