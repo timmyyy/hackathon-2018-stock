@@ -56,7 +56,7 @@ export class Home extends React.Component<IHomeProp> {
           ) : (
             <div style={{ position: 'absolute', top: 20, right: 40 }}>
               <Alert color="warning">
-                <h4>Добро пожаловать на STOCK!</h4>У вас нет аккаунта? &nbsp;
+                <h4>Добро пожаловать в "Новую Лигу"!</h4>У вас нет аккаунта? &nbsp;
                 <Link to="/register" className="alert-link">
                   Создать новый аккаунт
                 </Link>

@@ -19,8 +19,9 @@ export class PerformerProfile extends React.Component {
         </Col>
         <Col md={4}>
           <img src="https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png" style={{ width: '100%' }} />
+          <p style={{ textAlign: 'center' }}>Карма</p>
           <p style={{ textAlign: 'center' }}>
-            Карма <span style={{ color: 'green' }}>{profile.karma}</span>
+            <span style={{ color: 'red' }}>-</span> {profile.karma} <span style={{ color: 'green' }}>+</span>
           </p>
         </Col>
         <Col md={8}>
@@ -79,7 +80,7 @@ export class PerformerProfile extends React.Component {
 const mapStateToProps = state => ({
   profile: {
     fio: 'Иванов Иван Иванович',
-    karma: '+264',
+    karma: '264',
     organization: 'СберТех',
     rank: 'Главный инженер',
     department: 'Департамент развития фронтальных систем',
