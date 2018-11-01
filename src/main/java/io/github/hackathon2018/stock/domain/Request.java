@@ -46,7 +46,7 @@ public class Request implements Serializable {
     @OneToOne    @JoinColumn(unique = true)
     private Employee customer;
 
-    @OneToOne    @JoinColumn(unique = true)
+    @OneToOne(cascade = CascadeType.ALL)    @JoinColumn(unique = true)
     private Task task;
 
     @OneToOne    @JoinColumn(unique = true)
