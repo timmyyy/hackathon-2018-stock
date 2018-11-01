@@ -5,6 +5,7 @@ import { Switch } from 'react-router-dom';
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 
 import Task from './task';
+import TaskList from './task/taskList';
 import Employee from './employee';
 import Respond from './respond';
 import Feedback from './feedback';
@@ -18,6 +19,7 @@ const Routes = ({ match }) => (
     <Switch>
       {/* prettier-ignore */}
       <ErrorBoundaryRoute path={`${match.url}/task`} component={Task} />
+      <ErrorBoundaryRoute path={`${match.url}/tasks`} component={TaskList} />
       <ErrorBoundaryRoute path={`${match.url}/employee`} component={Employee} />
       <ErrorBoundaryRoute path={`${match.url}/respond`} component={Respond} />
       <ErrorBoundaryRoute path={`${match.url}/feedback`} component={Feedback} />

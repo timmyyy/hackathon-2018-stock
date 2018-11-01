@@ -2,9 +2,9 @@
     "jhipsterApp": {
         "TaskComplexity" : {
             "null": "",
-            "LOW": "LOW",
-            "MEDIUM": "MEDIUM",
-            "HARD": "HARD"
+            "LOW": "Низкая",
+            "MEDIUM": "Средняя",
+            "HARD": "Высокая"
         }
     }
 }
