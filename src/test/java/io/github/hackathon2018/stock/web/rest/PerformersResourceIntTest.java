@@ -1,11 +1,9 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
-
+import io.github.hackathon2018.stock.StockApp;
 import io.github.hackathon2018.stock.domain.Performers;
 import io.github.hackathon2018.stock.repository.PerformersRepository;
 import io.github.hackathon2018.stock.web.rest.errors.ExceptionTranslator;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-
 import static io.github.hackathon2018.stock.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -36,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see PerformersResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class PerformersResourceIntTest {
 
     @Autowired
@@ -133,7 +130,7 @@ public class PerformersResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(performers.getId().intValue())));
     }
-    
+
     @Test
     @Transactional
     public void getPerformers() throws Exception {
