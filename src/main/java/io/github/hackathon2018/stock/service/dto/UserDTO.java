@@ -20,7 +20,6 @@ public class UserDTO {
 
     private Long id;
 
-    @NotBlank
     private String role;
 
     @NotBlank
