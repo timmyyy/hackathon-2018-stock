@@ -3,6 +3,7 @@ package io.github.hackathon2018.stock.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import io.github.hackathon2018.stock.domain.Notification;
 import io.github.hackathon2018.stock.repository.NotificationRepository;
+import io.github.hackathon2018.stock.service.NotificationService;
 import io.github.hackathon2018.stock.web.rest.errors.BadRequestAlertException;
 import io.github.hackathon2018.stock.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -28,9 +29,11 @@ public class NotificationResource {
 
     private static final String ENTITY_NAME = "notification";
 
-    private NotificationRepository notificationRepository;
+    private final NotificationService notificationService;
+    private final NotificationRepository notificationRepository;
 
-    public NotificationResource(NotificationRepository notificationRepository) {
+    public NotificationResource(NotificationService notificationService, NotificationRepository notificationRepository) {
+        this.notificationService = notificationService;
         this.notificationRepository = notificationRepository;
     }
 

@@ -43,7 +43,7 @@ export class Home extends React.Component<IHomeProp> {
                   <Link to={'/login'}>Авторизация</Link>
                 </li>
                 <li>
-                  <Link to={'/'}>Публикация заявки</Link>
+                  <Link to={'/entity/task-creation'}>Публикация заявки</Link>
                 </li>
               </ul>
             </div>
