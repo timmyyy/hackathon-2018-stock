@@ -147,6 +147,12 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                   </AvInput>
                 </AvGroup>
                 <AvGroup>
+                  <Label id="resourcesCountLabel" for="resourcesCount">
+                    <Translate contentKey="jhipsterApp.task.resourcesCount">Resources Count</Translate>
+                  </Label>
+                  <AvField id="task-resourcesCount" type="string" className="form-control" name="resourcesCount" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="newIntegrationsLabel" check>
                     <AvInput id="task-newIntegrations" type="checkbox" className="form-control" name="newIntegrations" />
                     <Translate contentKey="jhipsterApp.task.newIntegrations">New Integrations</Translate>

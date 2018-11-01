@@ -42,6 +42,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="resources_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
             <column name="new_integrations" type="bit">
                 <constraints nullable="true" />
             </column>

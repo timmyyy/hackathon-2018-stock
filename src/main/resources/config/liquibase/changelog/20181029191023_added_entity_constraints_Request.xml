@@ -14,12 +14,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="employee"/>
 
-        <addForeignKeyConstraint baseColumnNames="performer_id"
-                                 baseTableName="request"
-                                 constraintName="fk_request_performer_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="employee"/>
-
         <addForeignKeyConstraint baseColumnNames="task_id"
                                  baseTableName="request"
                                  constraintName="fk_request_task_id"

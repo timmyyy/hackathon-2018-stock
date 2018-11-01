@@ -42,6 +42,9 @@ export class Employee extends React.Component<IEmployeeProps> {
                   <Translate contentKey="jhipsterApp.employee.role">Role</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="jhipsterApp.employee.commandRole">Command Role</Translate>
+                </th>
+                <th>
                   <Translate contentKey="jhipsterApp.employee.username">Username</Translate>
                 </th>
                 <th>
@@ -96,6 +99,9 @@ export class Employee extends React.Component<IEmployeeProps> {
                   </td>
                   <td>
                     <Translate contentKey={`jhipsterApp.EmployeeRole.${employee.role}`} />
+                  </td>
+                  <td>
+                    <Translate contentKey={`jhipsterApp.CommandRole.${employee.commandRole}`} />
                   </td>
                   <td>{employee.username}</td>
                   <td>{employee.firstname}</td>
