@@ -24,13 +24,13 @@ import java.util.Collection;
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 @EnableDiscoveryClient
-public class JhipsterApp {
+public class StockApp {
 
-    private static final Logger log = LoggerFactory.getLogger(JhipsterApp.class);
+    private static final Logger log = LoggerFactory.getLogger(StockApp.class);
 
     private final Environment env;
 
-    public JhipsterApp(Environment env) {
+    public StockApp(Environment env) {
         this.env = env;
     }
 
@@ -60,7 +60,7 @@ public class JhipsterApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(JhipsterApp.class);
+        SpringApplication app = new SpringApplication(StockApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

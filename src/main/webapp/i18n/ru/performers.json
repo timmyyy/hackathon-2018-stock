@@ -1,0 +1,23 @@
+
+{
+    "jhipsterApp": {
+        "performers" : {
+            "home": {
+                "title": "Performers",
+                "createLabel": "Создать новый Performers",
+                "createOrEditLabel": "Создать или отредактировать Performers"
+            },
+            "created": "Новый Performers создан с идентификатором {{ param }}",
+            "updated": "Performers обновлен с идентификатором {{ param }}",
+            "deleted": "Performers удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Performers {{ id }}?"
+            },
+            "detail": {
+                "title": "Performers"
+            },
+            "employee": "Employee",
+            "request": "Request"
+        }
+    }
+}

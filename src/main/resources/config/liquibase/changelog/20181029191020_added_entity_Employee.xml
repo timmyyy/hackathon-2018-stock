@@ -26,6 +26,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="command_role" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="username" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

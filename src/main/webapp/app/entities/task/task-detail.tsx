@@ -59,6 +59,12 @@ export class TaskDetail extends React.Component<ITaskDetailProps> {
             </dt>
             <dd>{taskEntity.complexity}</dd>
             <dt>
+              <span id="resourcesCount">
+                <Translate contentKey="jhipsterApp.task.resourcesCount">Resources Count</Translate>
+              </span>
+            </dt>
+            <dd>{taskEntity.resourcesCount}</dd>
+            <dt>
               <span id="newIntegrations">
                 <Translate contentKey="jhipsterApp.task.newIntegrations">New Integrations</Translate>
               </span>

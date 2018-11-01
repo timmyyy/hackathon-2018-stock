@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.NotificationType;
 import io.github.hackathon2018.stock.repository.NotificationTypeRepository;
@@ -37,7 +37,7 @@ import io.github.hackathon2018.stock.domain.enumeration.NotificationTypeCode;
  * @see NotificationTypeResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class NotificationTypeResourceIntTest {
 
     private static final NotificationTypeCode DEFAULT_CODE = NotificationTypeCode.NEW_REQUEST;

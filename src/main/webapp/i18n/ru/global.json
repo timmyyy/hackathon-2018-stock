@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Jhipster",
+        "title": "Stock :: app",
         "browsehappy": "Ваш браузер <strong>устарел</strong>. Пожалуйста <a href=\"http://browsehappy.com/?locale=ru\">обновите ваш браузер</a>.",
         "menu": {
             "home": "Главная",
@@ -14,6 +14,7 @@
                 "request": "Request",
                 "notification": "Notification",
                 "notificationType": "Notification Type",
+                "performers": "Performers",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -41,6 +42,11 @@
             "language": "Язык"
         },
         "form": {
+            "role": {
+              "title" : "Выберите роль",
+              "customer" : "Заказчик",
+              "performer" : "Исполнитель"
+            },
             "username": "Логин",
             "username.placeholder": "Ваш логин",
             "currentpassword": "Текущий пароль",

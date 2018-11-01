@@ -50,6 +50,8 @@ public class CacheConfiguration {
             cm.createCache(io.github.hackathon2018.stock.domain.Request.class.getName() + ".responses", jcacheConfiguration);
             cm.createCache(io.github.hackathon2018.stock.domain.Notification.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.hackathon2018.stock.domain.NotificationType.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Performers.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.hackathon2018.stock.domain.Request.class.getName() + ".performers", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

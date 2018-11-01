@@ -23,6 +23,10 @@
             "fieldValues": "LOW,MEDIUM,HARD"
         },
         {
+            "fieldName": "resourcesCount",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "newIntegrations",
             "fieldType": "Boolean"
         },

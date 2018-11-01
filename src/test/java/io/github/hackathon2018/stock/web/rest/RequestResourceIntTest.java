@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 
 import io.github.hackathon2018.stock.domain.Request;
 import io.github.hackathon2018.stock.repository.RequestRepository;
@@ -39,7 +39,7 @@ import io.github.hackathon2018.stock.domain.enumeration.RequestStatus;
  * @see RequestResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 public class RequestResourceIntTest {
 
     private static final Instant DEFAULT_CREATE_TIME = Instant.ofEpochMilli(0L);

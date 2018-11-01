@@ -14,6 +14,8 @@ import java.util.Objects;
 
 import io.github.hackathon2018.stock.domain.enumeration.EmployeeRole;
 
+import io.github.hackathon2018.stock.domain.enumeration.CommandRole;
+
 /**
  * Сотрудник организации,
  * может быть заказчиком и исполнителем
@@ -33,6 +35,10 @@ public class Employee implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "jhi_role")
     private EmployeeRole role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "command_role")
+    private CommandRole commandRole;
 
     @Column(name = "username")
     private String username;
@@ -99,6 +105,19 @@ public class Employee implements Serializable {
 
     public void setRole(EmployeeRole role) {
         this.role = role;
+    }
+
+    public CommandRole getCommandRole() {
+        return commandRole;
+    }
+
+    public Employee commandRole(CommandRole commandRole) {
+        this.commandRole = commandRole;
+        return this;
+    }
+
+    public void setCommandRole(CommandRole commandRole) {
+        this.commandRole = commandRole;
     }
 
     public String getUsername() {
@@ -334,6 +353,7 @@ public class Employee implements Serializable {
         return "Employee{" +
             "id=" + getId() +
             ", role='" + getRole() + "'" +
+            ", commandRole='" + getCommandRole() + "'" +
             ", username='" + getUsername() + "'" +
             ", firstname='" + getFirstname() + "'" +
             ", secondname='" + getSecondname() + "'" +

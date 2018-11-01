@@ -1,6 +1,6 @@
 package io.github.hackathon2018.stock.web.rest;
 
-import io.github.hackathon2018.stock.JhipsterApp;
+import io.github.hackathon2018.stock.StockApp;
 import io.github.hackathon2018.stock.config.audit.AuditEventConverter;
 import io.github.hackathon2018.stock.domain.PersistentAuditEvent;
 import io.github.hackathon2018.stock.repository.PersistenceAuditEventRepository;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AuditResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JhipsterApp.class)
+@SpringBootTest(classes = StockApp.class)
 @Transactional
 public class AuditResourceIntTest {
 
