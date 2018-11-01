@@ -25,7 +25,6 @@ export interface IRequestUpdateProps extends StateProps, DispatchProps, RouteCom
 export interface IRequestUpdateState {
   isNew: boolean;
   customerId: string;
-  performerId: string;
   taskId: string;
   feedbackId: string;
 }
@@ -35,7 +34,6 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
     super(props);
     this.state = {
       customerId: '0',
-      performerId: '0',
       taskId: '0',
       feedbackId: '0',
       isNew: !this.props.match.params || !this.props.match.params.id
@@ -173,6 +171,18 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
                     <option value="PERFORMER_CONFIRMED">
                       <Translate contentKey="jhipsterApp.RequestStatus.PERFORMER_CONFIRMED" />
                     </option>
+                    <option value="ANALYSIS">
+                      <Translate contentKey="jhipsterApp.RequestStatus.ANALYSIS" />
+                    </option>
+                    <option value="APPROVAL">
+                      <Translate contentKey="jhipsterApp.RequestStatus.APPROVAL" />
+                    </option>
+                    <option value="DEVELOPMENT">
+                      <Translate contentKey="jhipsterApp.RequestStatus.DEVELOPMENT" />
+                    </option>
+                    <option value="TESTING">
+                      <Translate contentKey="jhipsterApp.RequestStatus.TESTING" />
+                    </option>
                     <option value="IN_PROGRESS">
                       <Translate contentKey="jhipsterApp.RequestStatus.IN_PROGRESS" />
                     </option>
@@ -186,21 +196,6 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
                     <Translate contentKey="jhipsterApp.request.customer">Customer</Translate>
                   </Label>
                   <AvInput id="request-customer" type="select" className="form-control" name="customer.id">
-                    <option value="" key="0" />
-                    {employees
-                      ? employees.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </AvInput>
-                </AvGroup>
-                <AvGroup>
-                  <Label for="performer.id">
-                    <Translate contentKey="jhipsterApp.request.performer">Performer</Translate>
-                  </Label>
-                  <AvInput id="request-performer" type="select" className="form-control" name="performer.id">
                     <option value="" key="0" />
                     {employees
                       ? employees.map(otherEntity => (

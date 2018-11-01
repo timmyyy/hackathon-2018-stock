@@ -16,7 +16,8 @@
             "detail": {
                 "title": "Employee"
             },
-            "role": "Роль",
+            "role": "Роль в системе",
+            "commandRole": "Роль в команде",
             "username": "Логин",
             "firstname": "Имя",
             "secondname": "Фамилия",

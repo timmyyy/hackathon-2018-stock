@@ -7,10 +7,8 @@ import { Col, Row } from 'reactstrap';
 const Footer = props => (
   <div className="footer page-content">
     <Row>
-      <Col md="12">
-        <p>
-          <Translate contentKey="footer">Your footer</Translate>
-        </p>
+      <Col md="12" style={{ textAlign: 'right' }}>
+        Хакатон 2018
       </Col>
     </Row>
   </div>

@@ -47,9 +47,6 @@ public class Request implements Serializable {
     private Employee customer;
 
     @OneToOne    @JoinColumn(unique = true)
-    private Employee performer;
-
-    @OneToOne    @JoinColumn(unique = true)
     private Task task;
 
     @OneToOne    @JoinColumn(unique = true)
@@ -58,6 +55,9 @@ public class Request implements Serializable {
     @OneToMany(mappedBy = "request")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Respond> responses = new HashSet<>();
+    @OneToMany(mappedBy = "request")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Performers> performers = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -132,19 +132,6 @@ public class Request implements Serializable {
         this.customer = employee;
     }
 
-    public Employee getPerformer() {
-        return performer;
-    }
-
-    public Request performer(Employee employee) {
-        this.performer = employee;
-        return this;
-    }
-
-    public void setPerformer(Employee employee) {
-        this.performer = employee;
-    }
-
     public Task getTask() {
         return task;
     }
@@ -194,6 +181,31 @@ public class Request implements Serializable {
 
     public void setResponses(Set<Respond> responds) {
         this.responses = responds;
+    }
+
+    public Set<Performers> getPerformers() {
+        return performers;
+    }
+
+    public Request performers(Set<Performers> performers) {
+        this.performers = performers;
+        return this;
+    }
+
+    public Request addPerformers(Performers performers) {
+        this.performers.add(performers);
+        performers.setRequest(this);
+        return this;
+    }
+
+    public Request removePerformers(Performers performers) {
+        this.performers.remove(performers);
+        performers.setRequest(null);
+        return this;
+    }
+
+    public void setPerformers(Set<Performers> performers) {
+        this.performers = performers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

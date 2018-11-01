@@ -14,6 +14,7 @@ export interface ITask {
   system?: string;
   subsystem?: string;
   complexity?: TaskComplexity;
+  resourcesCount?: number;
   newIntegrations?: boolean;
   modifyIntegrations?: boolean;
   newPrintForms?: boolean;

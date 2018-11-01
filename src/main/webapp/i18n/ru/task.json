@@ -21,6 +21,7 @@
             "system": "Система",
             "subsystem": "Подсистема",
             "complexity": "Сложность",
+            "resourcesCount": "Число людей для выполнения задачи",
             "newIntegrations": "Новые интеграции",
             "modifyIntegrations": "Изменение интеграций",
             "newPrintForms": "Новые печатные формы",

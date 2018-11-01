@@ -35,6 +35,12 @@ export class EmployeeDetail extends React.Component<IEmployeeDetailProps> {
             </dt>
             <dd>{employeeEntity.role}</dd>
             <dt>
+              <span id="commandRole">
+                <Translate contentKey="jhipsterApp.employee.commandRole">Command Role</Translate>
+              </span>
+            </dt>
+            <dd>{employeeEntity.commandRole}</dd>
+            <dt>
               <span id="username">
                 <Translate contentKey="jhipsterApp.employee.username">Username</Translate>
               </span>
