@@ -27,9 +27,26 @@ export class Home extends React.Component<IHomeProp> {
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
-              {employee && employee.role === EmployeeRole.CUSTOMER && <Link to={'/entity/task-creation'}>Оформить заявку</Link>}
-
-              {employee && employee.role === EmployeeRole.PERFORMER && <PerformerHome />}
+              <ul>
+                {employee &&
+                  employee.role === EmployeeRole.CUSTOMER && (
+                    <li>
+                      <Link to={'/entity/task-creation'}>Оформить заявку</Link>
+                    </li>
+                  )}
+                {employee &&
+                  employee.role === 'CUSTOMER' && (
+                    <li>
+                      <Link to={'/entity/customer-requests'}>Мои заявки</Link>
+                    </li>
+                  )}
+                {employee &&
+                  employee.role === EmployeeRole.PERFORMER && (
+                    <li>
+                      <PerformerHome />
+                    </li>
+                  )}
+              </ul>
             </div>
           ) : (
             <div>
@@ -48,9 +65,6 @@ export class Home extends React.Component<IHomeProp> {
                 </li>
                 <li>
                   <Link to={'/login'}>Авторизация</Link>
-                </li>
-                <li>
-                  <Link to={'/entity/task-creation'}>Публикация заявки</Link>
                 </li>
               </ul>
             </div>

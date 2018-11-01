@@ -1,12 +1,10 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
-
-// tslint:disable-next-line:no-unused-variable
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
-
 import Task from './task';
 import TaskList from './task/taskList';
 import TaskCreation from './task/taskCreation';
+import CustomerRequests from './request/request-customer';
 import Employee from './employee';
 import Respond from './respond';
 import Feedback from './feedback';
@@ -20,10 +18,10 @@ import TasksProfilePerformer from './tasks-profile-performer';
 const Routes = ({ match }) => (
   <div>
     <Switch>
-      {/* prettier-ignore */}
       <ErrorBoundaryRoute path={`${match.url}/task`} component={Task} />
       <ErrorBoundaryRoute path={`${match.url}/tasks`} component={TaskList} />
       <ErrorBoundaryRoute path={`${match.url}/task-creation`} component={TaskCreation} />
+      <ErrorBoundaryRoute path={`${match.url}/customer-requests`} component={CustomerRequests} />
       <ErrorBoundaryRoute path={`${match.url}/employee`} component={Employee} />
       <ErrorBoundaryRoute path={`${match.url}/respond`} component={Respond} />
       <ErrorBoundaryRoute path={`${match.url}/feedback`} component={Feedback} />
