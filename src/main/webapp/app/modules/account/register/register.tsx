@@ -1,8 +1,8 @@
 import React from 'react';
 import { Translate, translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { AvForm, AvField, AvRadioGroup, AvRadio } from 'availity-reactstrap-validation';
-import { Row, Col, Alert, Button } from 'reactstrap';
+import { AvForm, AvField, AvRadioGroup, AvGroup, AvRadio } from 'availity-reactstrap-validation';
+import { Row, Col, Alert, Button, Label } from 'reactstrap';
 
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
 import { IRootState } from 'app/shared/reducers';
@@ -65,6 +65,24 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
 
               {role && (
                 <div>
+                  <AvGroup>
+                    <Label id="firstnameLabel" for="firstname">
+                      <Translate contentKey="jhipsterApp.employee.firstname">Firstname</Translate>
+                    </Label>
+                    <AvField id="employee-firstname" type="text" name="firstname" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="secondnameLabel" for="secondname">
+                      <Translate contentKey="jhipsterApp.employee.secondname">Secondname</Translate>
+                    </Label>
+                    <AvField id="employee-secondname" type="text" name="secondname" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="surenameLabel" for="surename">
+                      <Translate contentKey="jhipsterApp.employee.surename">Surename</Translate>
+                    </Label>
+                    <AvField id="employee-surename" type="text" name="surename" />
+                  </AvGroup>
                   <AvField
                     name="username"
                     label={translate('global.form.username')}
@@ -112,15 +130,55 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
                       match: { value: 'firstPassword', errorMessage: translate('global.messages.error.dontmatch') }
                     }}
                   />
-                  <Button id="register-submit" color="primary" type="submit">
-                    <Translate contentKey="register.form.button">Register</Translate>
-                  </Button>
                 </div>
               )}
 
-              {role === ROLES.CUSTOMER && <div />}
+              {role === ROLES.PERFORMER && (
+                <div>
+                  <AvGroup>
+                    <Label id="mobilePhoneLabel" for="mobilePhone">
+                      <Translate contentKey="jhipsterApp.employee.mobilePhone">Mobile Phone</Translate>
+                    </Label>
+                    <AvField id="employee-mobilePhone" type="text" name="mobilePhone" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="organizationLabel" for="organization">
+                      <Translate contentKey="jhipsterApp.employee.organization">Organization</Translate>
+                    </Label>
+                    <AvField id="employee-organization" type="text" name="organization" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="departmentLabel" for="department">
+                      <Translate contentKey="jhipsterApp.employee.department">Department</Translate>
+                    </Label>
+                    <AvField id="employee-department" type="text" name="department" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="countryLabel" for="country">
+                      <Translate contentKey="jhipsterApp.employee.country">Country</Translate>
+                    </Label>
+                    <AvField id="employee-country" type="text" name="country" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="streetAddressLabel" for="streetAddress">
+                      <Translate contentKey="jhipsterApp.employee.streetAddress">Street Address</Translate>
+                    </Label>
+                    <AvField id="employee-streetAddress" type="text" name="streetAddress" />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="cityLabel" for="city">
+                      <Translate contentKey="jhipsterApp.employee.city">City</Translate>
+                    </Label>
+                    <AvField id="employee-city" type="text" name="city" />
+                  </AvGroup>
+                </div>
+              )}
 
-              {role === ROLES.PERFORMER && <div />}
+              {role && (
+                <Button id="register-submit" color="primary" type="submit">
+                  <Translate contentKey="register.form.button">Register</Translate>
+                </Button>
+              )}
             </AvForm>
             <p>&nbsp;</p>
           </Col>
