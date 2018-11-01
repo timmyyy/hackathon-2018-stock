@@ -2,12 +2,9 @@ import './header.css';
 import React from 'react';
 import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
-import { Home, Brand } from './header-components';
-import { AdminMenu, EntitiesMenu, AccountMenu } from './menus';
+import { Brand } from './header-components';
+import { AdminMenu, AccountMenu } from './menus';
 import { PerformerMenu } from 'app/shared/layout/header/menus/performer';
-
-import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
-import { connect } from 'react-redux';
 import { EmployeeRole } from 'app/shared/model/employee.model';
 
 export interface IHeaderProps {
@@ -39,16 +36,9 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
   render() {
     const { login, isAuthenticated, isAdmin, isSwaggerEnabled, isInProduction, employees } = this.props;
-
-    console.log('employees', employees);
-
     const employee = employees && (employees.find(item => item.username.toLocaleLowerCase() === login) || {}).role;
     const isPerformer = employee == EmployeeRole.PERFORMER;
     const isCustomer = employee == EmployeeRole.CUSTOMER;
-
-    console.log('isCustomer', login, employee);
-
-    /* jhipster-needle-add-element-to-menu - JHipster will add new menu items here */
 
     return (
       <div id="app-header">
