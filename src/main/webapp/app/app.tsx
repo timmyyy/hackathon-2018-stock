@@ -14,8 +14,15 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
+import { EmployeeRole } from 'app/shared/model/employee.model';
+import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 
-export interface IAppProps extends StateProps, DispatchProps {}
+export interface IAppHeaderProps {
+  isPerformer: boolean;
+  isCustomer: boolean;
+}
+
+export interface IAppProps extends StateProps, DispatchProps, IAppHeaderProps {}
 
 export class App extends React.Component<IAppProps> {
   componentDidMount() {
@@ -40,6 +47,9 @@ export class App extends React.Component<IAppProps> {
               isAdmin={this.props.isAdmin}
               isInProduction={this.props.isInProduction}
               isSwaggerEnabled={this.props.isSwaggerEnabled}
+              login={this.props.login}
+              employees={this.props.employees}
+              getEmployees={this.props.getEmployees}
             />
           </ErrorBoundary>
           <div className="container-fluid view-container" id="app-view-container">
@@ -56,14 +66,16 @@ export class App extends React.Component<IAppProps> {
   }
 }
 
-const mapStateToProps = ({ authentication, applicationProfile }: IRootState) => ({
+const mapStateToProps = ({ authentication, applicationProfile, employee }: IRootState) => ({
   isAuthenticated: authentication.isAuthenticated,
   isAdmin: hasAnyAuthority(authentication.account.authorities, [AUTHORITIES.ADMIN]),
   isInProduction: applicationProfile.inProduction,
-  isSwaggerEnabled: applicationProfile.isSwaggerEnabled
+  isSwaggerEnabled: applicationProfile.isSwaggerEnabled,
+  login: authentication.account.login,
+  employees: employee.entities
 });
 
-const mapDispatchToProps = { getSession, getProfile };
+const mapDispatchToProps = { getSession, getProfile, getEmployees };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
