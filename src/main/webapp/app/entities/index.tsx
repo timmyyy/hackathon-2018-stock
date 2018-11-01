@@ -14,6 +14,7 @@ import Request from './request';
 import Notification from './notification';
 import NotificationType from './notification-type';
 import Performers from './performers';
+import TasksProfilePerformer from './tasks-profile-performer';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -30,6 +31,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}/notification`} component={Notification} />
       <ErrorBoundaryRoute path={`${match.url}/notification-type`} component={NotificationType} />
       <ErrorBoundaryRoute path={`${match.url}/performers`} component={Performers} />
+      <ErrorBoundaryRoute path={`${match.url}/tasks-profile-performer`} component={TasksProfilePerformer} />
       {/* jhipster-needle-add-route-path - JHipster will routes here */}
     </Switch>
   </div>

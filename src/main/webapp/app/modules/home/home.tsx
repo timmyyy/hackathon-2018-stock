@@ -3,9 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { Row, Col, Alert } from 'reactstrap';
+import { Alert, Col, Row } from 'reactstrap';
 import { getSession } from 'app/shared/reducers/authentication';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
+import PerformerHome from 'app/modules/home/performerHome';
+import { EmployeeRole } from 'app/shared/model/employee.model';
 
 export interface IHomeProp extends StateProps, DispatchProps {}
 
@@ -25,9 +27,9 @@ export class Home extends React.Component<IHomeProp> {
           {isAuthenticated ? (
             <div>
               <h2>Здравствуйте, {account.login}!</h2>
-              {employee && employee.role === 'CUSTOMER' && <Link to={'/entity/task-creation'}>Оформить заявку</Link>}
+              {employee && employee.role === EmployeeRole.CUSTOMER && <Link to={'/entity/task-creation'}>Оформить заявку</Link>}
 
-              {employee && employee.role === 'PERFORMER' && <Link to={'/entity/tasks-performer'}>Просмотреть мои заявки</Link>}
+              {employee && employee.role === EmployeeRole.PERFORMER && <PerformerHome />}
             </div>
           ) : (
             <div>
