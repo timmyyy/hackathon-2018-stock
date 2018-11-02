@@ -75,7 +75,7 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
   };
 
   search = () => {
-    axios.get('/api/search/' + originalText).then(response => {
+    axios.get('/api/search/' + this.props.taskEntity.commaSeparatedKeywords).then(response => {
       this.setState({ performers: response.data });
     });
   };
