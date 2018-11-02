@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TomitaCmdWrapper implements TomitaParser {
     private final Logger log = LoggerFactory.getLogger(TomitaCmdWrapper.class);
@@ -55,8 +56,10 @@ public class TomitaCmdWrapper implements TomitaParser {
     }
 
     private String createTmpTextFile(String text, String suffix) throws IOException {
-        File tempFile = File.createTempFile(TEMP_PREFIX, suffix);
-        tempFile.deleteOnExit();
+        String rndFilename = UUID.randomUUID().toString().replace("-", "");
+        File tempFile = new File("C:\\Temp\\" + rndFilename + suffix);
+//        File tempFile = File.createTempFile(TEMP_PREFIX, suffix);
+//        tempFile.deleteOnExit();
         BufferedOutputStream output = null;
         try {
             output = new BufferedOutputStream(new FileOutputStream(tempFile));
@@ -187,20 +190,21 @@ public class TomitaCmdWrapper implements TomitaParser {
     }
 
     private String getTmpDir() {
-        String tmpDir = System.getProperty("java.io.tmpdir");
-
-        StringBuilder execPathBuilder = new StringBuilder(tmpDir);
-        if (!tmpDir.endsWith("/") && !tmpDir.endsWith("\\")) {
-            execPathBuilder.append("/");
-        }
-        return execPathBuilder.toString();
+        return "C:\\Temp\\";
+//        String tmpDir = System.getProperty("java.io.tmpdir");
+//
+//        StringBuilder execPathBuilder = new StringBuilder(tmpDir);
+//        if (!tmpDir.endsWith("/") && !tmpDir.endsWith("\\")) {
+//            execPathBuilder.append("/");
+//        }
+//        return execPathBuilder.toString();
     }
 
     private void unzipProgram() throws IOException {
         InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(TOMITA_ZIP_FILENAME);
         UnZip unZip = new UnZip();
         unZip.setMode(UnZip.EXTRACT);
-        unZip.setBaseDir(System.getProperty("java.io.tmpdir"));
+        unZip.setBaseDir(getTmpDir());
         unZip.unZip(input);
     }
 
