@@ -106,7 +106,7 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
             {loading ? (
               <p>Loading...</p>
             ) : (
-              <AvForm model={isNew ? {} : taskEntity} onSubmit={this.saveEntity}>
+              <AvForm model={taskEntity || {}} onSubmit={this.saveEntity}>
                 <AvGroup>
                   <Label id="originalTextLabel" for="originalText">
                     <Translate contentKey="jhipsterApp.task.originalText">Original Text</Translate>
