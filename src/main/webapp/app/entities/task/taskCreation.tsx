@@ -10,6 +10,7 @@ import { getEntity, updateEntity, createEntity, reset } from "./task.reducer";
 import { createEntity as createRequest } from "../request/request.reducer";
 import { RequestStatus } from "app/shared/model/request.model.ts";
 import axios from "axios";
+import { ITask } from "app/shared/model/task.model";
 
 export interface ITaskUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {
 }
@@ -39,7 +40,8 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
     super ( props );
 
     this.state = {
-      performers: []
+      performers: [],
+      someText: ""
     };
   }
 
@@ -76,9 +78,17 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
     this.props.history.push ( "/entity/tasks" );
   };
 
+  onTextareaChange = event => {
+    this.setState({someText: event.target.value })
+
+    setTimeout(() => {
+      axios.post("api/tasks/from/txt", { text: this.state.someText })
+    }, 3000)
+  };
+
   render () {
     const { loading, updating } = this.props;
-    const { performers } = this.state;
+    const { performers, someText } = this.state;
 
     return (
       <div>
@@ -99,7 +109,7 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                   <Label id="originalTextLabel" for="originalText">
                     <Translate contentKey="jhipsterApp.task.originalText">Original Text</Translate>
                   </Label>
-                  <AvField id="task-originalText" type="textarea" name="originalText"/>
+                  <AvField value={someText} id="task-originalText" type="textarea" name="originalText" onChange={this.onTextareaChange}/>
                 </AvGroup>
                 <AvGroup>
                   <Label id="systemLabel" for="system">
