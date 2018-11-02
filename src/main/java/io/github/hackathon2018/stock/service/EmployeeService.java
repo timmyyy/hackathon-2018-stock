@@ -1,17 +1,14 @@
 package io.github.hackathon2018.stock.service;
 
 import io.github.hackathon2018.stock.domain.Employee;
-import io.github.hackathon2018.stock.domain.Performers;
 import io.github.hackathon2018.stock.domain.Task;
 import io.github.hackathon2018.stock.repository.EmployeeRepository;
-import org.apache.commons.text.similarity.JaccardSimilarity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Service class for performers
@@ -43,12 +40,7 @@ public class EmployeeService {
     public List<Employee> search(String keyWords) {
         log.debug("Search performers by keyWords = " + keyWords);
 
-        Map<Double, List<Employee>> distanceToTask = new TreeMap<>(new Comparator<Double>() {
-            @Override
-            public int compare(Double o1, Double o2) {
-                return (-1) * o1.compareTo(o2);
-            }
-        });
+        Map<Double, List<Employee>> distanceToTask = new TreeMap<>((o1, o2) -> (-1) * o1.compareTo(o2));
 
         String[] words = keyWordSplitter(keyWords);
         for (Employee employee : employeeRepository.findAll()) {
