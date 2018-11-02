@@ -1,9 +1,11 @@
 package io.github.hackathon2018.stock.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.hackathon2018.stock.domain.Task;
 import io.github.hackathon2018.stock.repository.TaskRepository;
 import io.github.hackathon2018.stock.service.TaskTextService;
+import io.github.hackathon2018.stock.service.dto.DescWrapperDTO;
 import io.github.hackathon2018.stock.web.rest.errors.BadRequestAlertException;
 import io.github.hackathon2018.stock.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -12,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -62,8 +65,10 @@ public class TaskResource {
 
     @PostMapping("/tasks/from/txt")
     @Timed
-    public ResponseEntity<Task> createTask(@RequestBody String text) {
-        return ResponseEntity.ok(taskTextService.createTaskFromText(text));
+    public ResponseEntity<Task> createTask(@RequestBody String text) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        DescWrapperDTO desc = mapper.readValue(text, DescWrapperDTO.class);
+        return ResponseEntity.ok(taskTextService.createTaskFromText(desc.getText()));
     }
 
     /**
