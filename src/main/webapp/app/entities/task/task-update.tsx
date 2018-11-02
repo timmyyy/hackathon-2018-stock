@@ -69,6 +69,8 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
       } else {
         this.props.updateEntity(entity);
       }
+
+      this.handleClose();
     }
   };
 
