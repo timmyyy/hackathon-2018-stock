@@ -12,7 +12,7 @@ import { IRequest } from 'app/shared/model/request.model';
 import { getEntities as getRequests } from 'app/entities/request/request.reducer';
 import { IEmployee } from 'app/shared/model/employee.model';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
-import { getEntity, updateEntity, createEntity, reset } from './task.reducer';
+import { getEntity, updateEntity, createEntity, reset, getTomato } from './task.reducer';
 import { ITask } from 'app/shared/model/task.model';
 // tslint:disable-next-line:no-unused-variable
 import { convertDateTimeFromServer } from 'app/shared/util/date-utils';
@@ -25,6 +25,8 @@ export interface ITaskUpdateState {
   requestId: string;
   performerId: string;
 }
+
+var originalText = '';
 
 export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateState> {
   constructor(props) {
@@ -74,8 +76,12 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
   };
 
   render() {
-    const { taskEntity, requests, employees, loading, updating } = this.props;
+    const { taskEntity, requests, employees, loading, updating, getTomato } = this.props;
     const { isNew } = this.state;
+
+    const onTomato = () => {
+      getTomato(originalText);
+    };
 
     return (
       <div>
@@ -92,19 +98,19 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
               <p>Loading...</p>
             ) : (
               <AvForm model={isNew ? {} : taskEntity} onSubmit={this.saveEntity}>
-                {!isNew ? (
-                  <AvGroup>
-                    <Label for="id">
-                      <Translate contentKey="global.field.id">ID</Translate>
-                    </Label>
-                    <AvInput id="task-id" type="text" className="form-control" name="id" required readOnly />
-                  </AvGroup>
-                ) : null}
                 <AvGroup>
                   <Label id="originalTextLabel" for="originalText">
                     <Translate contentKey="jhipsterApp.task.originalText">Original Text</Translate>
                   </Label>
-                  <AvField id="task-originalText" type="text" name="originalText" />
+                  <AvField
+                    id="task-originalText"
+                    type="textarea"
+                    rows={5}
+                    name="originalText"
+                    onChange={(ev, text123) => {
+                      originalText = text123;
+                    }}
+                  />
                 </AvGroup>
                 <AvGroup>
                   <Label id="commaSeparatedKeywordsLabel" for="commaSeparatedKeywords">
@@ -199,6 +205,23 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                   </span>
                 </Button>
                 &nbsp;
+                <Button
+                  replace
+                  color="info"
+                  id="tomato"
+                  name="tomato"
+                  value="qwerty"
+                  onClick={e => {
+                    e.stopPropagation();
+
+                    onTomato();
+                  }}
+                >
+                  <FontAwesomeIcon icon="arrow-up" />
+                  &nbsp;
+                  <span className="d-info d-md-inline">Предзаполнение</span>
+                </Button>
+                &nbsp;
                 <Button color="primary" id="save-entity" type="submit" disabled={updating}>
                   <FontAwesomeIcon icon="save" />
                   &nbsp;
@@ -219,7 +242,8 @@ const mapStateToProps = (storeState: IRootState) => ({
   taskEntity: storeState.task.entity,
   loading: storeState.task.loading,
   updating: storeState.task.updating,
-  updateSuccess: storeState.task.updateSuccess
+  updateSuccess: storeState.task.updateSuccess,
+  store: storeState
 });
 
 const mapDispatchToProps = {
@@ -228,7 +252,8 @@ const mapDispatchToProps = {
   getEntity,
   updateEntity,
   createEntity,
-  reset
+  reset,
+  getTomato
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
