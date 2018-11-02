@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Service class for performers
@@ -42,8 +43,12 @@ public class EmployeeService {
     public List<Employee> search(String keyWords) {
         log.debug("Search performers by keyWords = " + keyWords);
 
-        JaccardSimilarity jaccardSimilarity = new JaccardSimilarity();
-        Map<Double, List<Employee>> distanceToTask = new TreeMap<>();
+        Map<Double, List<Employee>> distanceToTask = new TreeMap<>(new Comparator<Double>() {
+            @Override
+            public int compare(Double o1, Double o2) {
+                return (-1) * o1.compareTo(o2);
+            }
+        });
 
         String[] words = keyWordSplitter(keyWords);
         for (Employee employee : employeeRepository.findAll()) {
@@ -52,7 +57,7 @@ public class EmployeeService {
                 String[] taskKeyWords = keyWordSplitter(task.getCommaSeparatedKeywords());
                 for (String searchWord : words) {
                     for (String word : taskKeyWords) {
-                        distance += jaccardSimilarity.apply(searchWord, word);
+                        distance += calcDistance(searchWord, word);
                     }
                 }
             }
@@ -68,12 +73,32 @@ public class EmployeeService {
             }
         }
 
-        List<Employee> employeeList = new ArrayList(distanceToTask.values());
-        if (employeeList.size() != 0) {
-            Collections.reverse(employeeList);
+        List<Employee> result = new ArrayList<>();
+        for (List<Employee> employees : distanceToTask.values()) {
+            result.addAll(employees);
         }
-        return employeeList;
+        return result;
     }
+
+    private Double calcDistance(String left, String right) {
+        if (left.length() == right.length()) {
+            return left.equals(right) ? 1D : 0D;
+        }
+        if (left.length() > right.length()) {
+            if (left.startsWith(right)) {
+                return (double) right.length() / (double) left.length();
+            } else {
+                return 0D;
+            }
+        } else {
+            if (right.startsWith(left)) {
+                return (double) left.length() / (double) right.length();
+            } else {
+                return 0D;
+            }
+        }
+    }
+
 
     private String[] keyWordSplitter(String keywords) {
         return Arrays.stream(keywords.toLowerCase().split(",")).map(String::trim).toArray(String[]::new);
