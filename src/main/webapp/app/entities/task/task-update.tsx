@@ -211,7 +211,9 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                   id="tomato"
                   name="tomato"
                   value="qwerty"
-                  onClick={() => {
+                  onClick={e => {
+                    e.stopPropagation();
+
                     onTomato();
                   }}
                 >
