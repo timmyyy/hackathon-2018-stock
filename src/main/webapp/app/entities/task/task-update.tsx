@@ -9,26 +9,24 @@ import { IRootState } from 'app/shared/reducers';
 import { getEntities as getRequests } from 'app/entities/request/request.reducer';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import { getEntity, updateEntity, createEntity, reset, getTomato } from './task.reducer';
-import axios from "axios"
+import axios from 'axios';
 
 export interface ITaskUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export interface ITaskUpdateState {
-}
+export interface ITaskUpdateState {}
 
 var originalText = '';
 
 const fake = [
   {
-    firstname: "Иван",
-    secondname: "Комаров"
+    firstname: 'Иван',
+    secondname: 'Комаров'
   },
   {
-    firstname: "Мальцев",
-    secondname: "Стаснислав"
+    firstname: 'Мальцев',
+    secondname: 'Стаснислав'
   }
 ];
-
 
 export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateState> {
   constructor(props) {
@@ -71,11 +69,13 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
       } else {
         this.props.updateEntity(entity);
       }
-
-      axios.get ( "/api/search/" + values.originalText ).then ( response => {
-        this.setState ( { performers: response.data } );
-      } );
     }
+  };
+
+  search = () => {
+    axios.get('/api/search/' + originalText).then(response => {
+      this.setState({ performers: response.data });
+    });
   };
 
   handleClose = () => {
@@ -204,35 +204,65 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                       : null}
                   </AvInput>
                 </AvGroup>
-                {
-                  performers && performers.length > 0 &&
-                  <h4 style={{ margin: "50px 0 0" }}>По вашей задаче найдены кандидаты на исполнение:</h4>
-                }
-                {
-                  performers && performers.length > 0 &&
-                  performers.map ( item => {
+                {performers &&
+                  performers.length > 0 && <h4 style={{ margin: '50px 0 0' }}>По вашей задаче найдены кандидаты на исполнение:</h4>}
+                {performers &&
+                  performers.length > 0 &&
+                  performers.map(item => {
                     return (
-                      <Alert color="success" style={{ margin: "20px 0" }}>
+                      <Alert color="success" style={{ margin: '20px 0' }}>
                         <Row>
                           <Col md={1}>
-                            <img src="http://www.stickpng.com/assets/images/585e4bcdcb11b227491c3396.png" style={{ width: 30, padding: "10px 0 0" }}/>
+                            <img
+                              src="http://www.stickpng.com/assets/images/585e4bcdcb11b227491c3396.png"
+                              style={{ width: 30, padding: '10px 0 0' }}
+                            />
                           </Col>
                           <Col md={11}>
-                            {item.firstname && <span>Имя: {item.firstname}<br/></span>}
-                            {item.secondname && <span>Фамилия: {item.secondname}<br/></span>}
-                            {item.email && <span>Эл. адрес: {item.email}<br/></span>}
-                            {item.mobilePhone && <span>Мобильный телефон: {item.mobilePhone}<br/></span>}
-                            {item.organization && <span>Организация: {item.organization}<br/></span>}
-                            {item.department && <span>Департамент: {item.department}<br/></span>}
+                            {item.firstname && (
+                              <span>
+                                Имя: {item.firstname}
+                                <br />
+                              </span>
+                            )}
+                            {item.secondname && (
+                              <span>
+                                Фамилия: {item.secondname}
+                                <br />
+                              </span>
+                            )}
+                            {item.email && (
+                              <span>
+                                Эл. адрес: {item.email}
+                                <br />
+                              </span>
+                            )}
+                            {item.mobilePhone && (
+                              <span>
+                                Мобильный телефон: {item.mobilePhone}
+                                <br />
+                              </span>
+                            )}
+                            {item.organization && (
+                              <span>
+                                Организация: {item.organization}
+                                <br />
+                              </span>
+                            )}
+                            {item.department && (
+                              <span>
+                                Департамент: {item.department}
+                                <br />
+                              </span>
+                            )}
                             {item.rank && <span>Карма: {item.rank}</span>}
-                            <br/>
+                            <br />
                             <Button>Отправить запрос</Button>
                           </Col>
                         </Row>
                       </Alert>
                     );
-                  } )
-                }
+                  })}
                 <Button tag={Link} id="cancel-save" to="/entity/task" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />
                   &nbsp;
@@ -256,6 +286,11 @@ export class TaskUpdate extends React.Component<ITaskUpdateProps, ITaskUpdateSta
                   <FontAwesomeIcon icon="arrow-up" />
                   &nbsp;
                   <span className="d-info d-md-inline">Предзаполнение</span>
+                </Button>
+                &nbsp;
+                <Button color="info" onClick={this.search}>
+                  &nbsp;
+                  <span className="d-info d-md-inline">Найти</span>
                 </Button>
                 &nbsp;
                 <Button color="primary" id="save-entity" type="submit" disabled={updating}>
