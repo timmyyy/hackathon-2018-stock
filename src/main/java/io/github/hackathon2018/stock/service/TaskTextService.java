@@ -20,8 +20,10 @@ public class TaskTextService {
         log.debug("==> createTaskFromText({})", text);
 
         TomitaParser parser = TomitaParserFactory.getInstance(CMD);
-        Facts facts = parser.getFacts(text);
+        Facts facts = parser.getFacts(text.trim());
         Task task = new Task();
+
+        task.setOriginalText(text.trim());
 
         if (facts.getSystems().size() > 0) {
             task.setSystem(facts.getSystems().get(0));
